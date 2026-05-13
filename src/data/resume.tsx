@@ -8,17 +8,27 @@ export const DATA = {
   location: "Lahore, PK",
   locationLink: "https://www.google.com/maps/place/lahore",
   description:
-    "Full-Stack Developer turned Founder. I love to build digital solutions and empower others. Probably fixing bugs as you read this.",
+    "Full-stack developer building modern web experiences, experimenting with AI, and currently working on startups that solve real-world problems. Probably fixing bugs as you read this.",
 
-  summary: `I'm a **full-stack web developer** and a **BSIT student at the University of Management and Technology (UMT)**, specializing in modern web applications built with the **MERN stack** and **Next.js**. I have a strong inclination toward **backend engineering** and genuinely enjoy navigating complex logs and production-level problem-solving.
+  summary: `I'm a **full-stack web developer** and a **BSIT student at the University of Management and Technology (UMT)** who enjoys building modern, scalable, and user-focused applications with the **MERN stack**, **Next.js**, and increasingly, backend-heavy architectures.
 
-In addition to my technical work, I serve as the **Web Development Lead at UMT ACM**, where I oversee the planning and execution of **developer-focused workshops**, **training sessions**, and **technical events**. This role enables me to contribute to the community while strengthening my leadership and facilitation capabilities.
+Most of my time goes into building products, experimenting with ideas, breaking things accidentally, and then spending hours figuring out why they broke in the first place.
 
-I'm also the **Founder & CEO of Codemaven Solutions**, a company dedicated to building **web and mobile applications**, crafting **clean and intuitive user experiences**, and developing **AI-powered solutions**.
+Currently, I serve as the **Web Development Lead at UMT ACM**, where I help organize developer-focused workshops, technical sessions, and community events for students who want to grow beyond tutorials and build real things.
 
-I’ve completed **two internships** across both product and service-based companies, gaining practical experience in real-world engineering challenges. I enjoy working on **mobile applications** as well—despite my ongoing love-hate relationship with the quirks of mobile development.
+I’m currently working on **CodDock**, a platform focused on helping Pakistani developers grow from learning programming to building projects, improving their skills, and eventually landing freelance work or tech jobs. The idea combines structured learning roadmaps, developer tools, community features, interview preparation, and AI-powered assistance into one ecosystem designed for aspiring developers.
 
-Currently, my focus is on **continuous learning**, **building**, and **shipping impactful products**—often with a cup of milk in one hand and a deployment pipeline in the other. I'm also exploring **freelancing opportunities on Upwork**, so if you're looking for someone to execute your vision with precision, you know where to reach me.`,
+Over time, I’ve had the opportunity to work with both product-based and service-based teams, contribute to real-world applications, and collaborate with developers, designers, and founders on meaningful projects.
+
+Things I genuinely enjoy:\n
+• Building full-stack applications  
+• Backend engineering & APIs  
+• AI integrations & experimentation  
+• Designing scalable systems  
+• Clean UI/UX  
+• Shipping products people actually use  
+
+When I’m not coding, I’m usually exploring new tech, refining ideas for future products, or convincing myself that this deployment will finally work on the first try.`,
   avatarUrl: "/uneeb.png",
   skills: [
     "React",
@@ -51,7 +61,7 @@ Currently, my focus is on **continuous learning**, **building**, and **shipping 
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://github.com/Uneebbhat",
+        url: "https://github.com/uneebbhatti3",
         icon: Icons.github,
 
         navbar: true,
@@ -95,7 +105,7 @@ Currently, my focus is on **continuous learning**, **building**, and **shipping 
       title: "Founder & CEO",
       logoUrl: "/codemavensolutions.png",
       start: "July 2024",
-      end: "Present",
+      end: "May 2026",
       description:
         "Leading a remote team to deliver web, mobile, and AI-driven software solutions for global clients. Overseeing end-to-end project lifecycles — from UI/UX design and development to deployment. Built scalable web applications using MERN stack and Next.js, and contributed to mobile app development using React Native. Managing client communication, team operations, and technical architecture to ensure timely and high-quality delivery.",
     },
