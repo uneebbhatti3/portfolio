@@ -8,27 +8,31 @@ export const DATA = {
   location: "Lahore, PK",
   locationLink: "https://www.google.com/maps/place/lahore",
   description:
-    "Full-stack developer building modern web experiences, experimenting with AI, and currently working on startups that solve real-world problems. Probably fixing bugs as you read this.",
+    "Full-stack developer who enjoys turning ideas into products with Next.js, TypeScript, and AI. Most days I'm building something, breaking something, and eventually figuring out why.",
 
-  summary: `I'm a **full-stack web developer** and a **BSIT student at the University of Management and Technology (UMT)** who enjoys building modern, scalable, and user-focused applications with the **MERN stack**, **Next.js**, and increasingly, backend-heavy architectures.
+  summary: `
+I have a small problem: once an idea gets stuck in my head, I usually end up trying to build it.
 
-Most of my time goes into building products, experimenting with ideas, breaking things accidentally, and then spending hours figuring out why they broke in the first place.
+Sometimes it becomes a weekend experiment. Sometimes I keep building it for months and start thinking, “okay, this one might actually become a real product.” So far, no luck — but the 2 AM bug discoveries have been very consistent.
 
-Currently, I serve as the **Web Development Lead at UMT ACM**, where I help organize developer-focused workshops, technical sessions, and community events for students who want to grow beyond tutorials and build real things.
+I'm a full-stack developer and BSIT student at UMT who enjoys building software from the ground up—figuring out how an idea should work, designing the experience, building the backend, connecting everything together, and eventually shipping it.
 
-I’m currently working on **CodDock**, a platform focused on helping Pakistani developers grow from learning programming to building projects, improving their skills, and eventually landing freelance work or tech jobs. The idea combines structured learning roadmaps, developer tools, community features, interview preparation, and AI-powered assistance into one ecosystem designed for aspiring developers.
+These days, I mostly work with **Next.js, Node.js, TypeScript, and AI**, while going deeper into backend engineering, system design, and how production applications actually work beyond the happy path.
 
-Over time, I’ve had the opportunity to work with both product-based and service-based teams, contribute to real-world applications, and collaborate with developers, designers, and founders on meaningful projects.
+I'm also the **Web Development Lead at UMT ACM**, where I'll be helping organize technical workshops and developer-focused sessions for students who want to move beyond tutorials, experiment with real tools, and build things that actually work outside the classroom.
 
-Things I genuinely enjoy:\n
-• Building full-stack applications  
-• Backend engineering & APIs  
-• AI integrations & experimentation  
-• Designing scalable systems  
-• Clean UI/UX  
-• Shipping products people actually use  
+Right now, I'm working on **CodDock**, a platform focused on helping aspiring Pakistani developers learn practical skills, build projects, prepare for interviews, and move closer to freelance opportunities or software engineering jobs.
 
-When I’m not coding, I’m usually exploring new tech, refining ideas for future products, or convincing myself that this deployment will finally work on the first try.`,
+A few things I genuinely enjoy:
+
+• Building full-stack products  
+• Designing backend APIs  
+• Experimenting with AI  
+• Turning ideas into MVPs  
+• Creating clean, responsive interfaces  
+• Learning how good software behaves once real users get involved  
+
+When I'm away from my laptop, I'm usually thinking about the next product I want to build... or convincing myself this deployment definitely won't fail this time.`,
   avatarUrl: "/uneeb.png",
   skills: [
     "React",
@@ -102,36 +106,36 @@ When I’m not coding, I’m usually exploring new tech, refining ideas for futu
       href: "https://www.codemavensolutions.com/",
       badges: [],
       location: "Remote",
-      title: "Founder & CEO",
+      title: "Founder",
       logoUrl: "/codemavensolutions.png",
       start: "July 2024",
       end: "May 2026",
       description:
-        "Leading a remote team to deliver web, mobile, and AI-driven software solutions for global clients. Overseeing end-to-end project lifecycles — from UI/UX design and development to deployment. Built scalable web applications using MERN stack and Next.js, and contributed to mobile app development using React Native. Managing client communication, team operations, and technical architecture to ensure timely and high-quality delivery.",
+        "Started Codemaven Solutions with the goal of building a remote software company around web, mobile, and AI development. I spent time working on the company setup, service positioning, branding, technical direction, and figuring out how to turn development skills into an actual business. It never reached the client traction I hoped for, so I eventually closed it — but the experience taught me a lot about sales, positioning, execution, and how different building a business is from simply building software.",
     },
     {
       company: "Token Talent HR",
       badges: [],
       href: "https://tokentalent.co/",
       location: "Lahore, PK",
-      title: "Backend Developer",
+      title: "Backend Developer Intern",
       logoUrl: "/token.png",
       start: "August 2024",
       end: "September 2024",
       description:
-        "Worked on backend development for internal HR tooling and talent-matching systems. Built and optimized REST APIs using Express.js and MongoDB, integrated third-party services, and contributed to database schema design. Collaborated with the frontend and product teams to ensure smooth data flow and consistent application logic across platforms.",
+        "Worked on backend development for HR tooling and talent-matching workflows. Built and improved REST APIs with Express.js and MongoDB, contributed to database schema design, integrated third-party services, and collaborated with frontend and product teams to keep application logic consistent across the platform.",
     },
     {
       company: "Concypt",
       href: "https://concypt.co.uk/",
       badges: [],
       location: "Lahore, PK",
-      title: "Front-end Developer & QA Engineer",
+      title: "Front-end Developer & QA Engineer Intern",
       logoUrl: "/concypt.jpg",
       start: "July 2023",
       end: "October 2023",
       description:
-        "Developed and maintained frontend features for client projects using HTML, CSS, and JavaScript. Worked closely with the design and backend teams to ensure seamless UI integration. Also contributed to QA processes by writing test cases, performing cross-browser testing, and identifying performance bottlenecks in staging environments.",
+        "Built and maintained frontend features for client projects using HTML, CSS, and JavaScript. Worked with design and backend teams to implement UI requirements, fix integration issues, and support QA through test case writing, cross-browser checks, staging reviews, and performance issue reporting.",
     },
   ],
   education: [
@@ -168,29 +172,28 @@ When I’m not coding, I’m usually exploring new tech, refining ideas for futu
       active: true,
       description: `
 **Overview**  
-Capto AI is a **content creation assistant** built for creators, marketers, and entrepreneurs who want to produce engaging content faster.  
-It provides two powerful AI-driven tools — a **Captions Generator** for short, engaging social media captions, and a **Prompt Generator** for crafting high-quality prompts for any AI model, especially for those who struggle to write effective prompts.
+Capto AI is a content creation assistant for creators, marketers, and entrepreneurs who need faster ways to generate captions and AI prompts.
+
+It includes two main tools: a **Captions Generator** for short-form social content and a **Prompt Generator** for creating clearer prompts for AI tools.
 
 **Problem**  
-Content creators often spend too much time brainstorming captions or struggle to get the right output from AI tools because of poorly written prompts.  
-This leads to wasted time, inconsistent quality, and missed posting opportunities.
+Creators often lose time writing captions or trying to get useful output from AI tools. A weak prompt usually leads to generic results, repeated attempts, and inconsistent content quality.
 
 **Solution**  
-Capto AI offers a streamlined interface with no overcomplicated settings — just input your topic or idea, and instantly get either ready-to-use captions or professionally structured prompts.  
-It’s designed to help users create better content, faster, without the learning curve of prompt engineering.
+Capto AI keeps the workflow simple: users enter an idea or topic, choose the tool they need, and get usable output without dealing with complex settings.
 
 **Key Features**  
-• Captions Generator for quick, attention-grabbing social posts  
-• Prompt Generator to get high-quality results from any AI tool  
-• Simple, distraction-free UI for fast results  
-• Usage limits with Free & Paid plans  
-• Instant web access — no downloads required
+• AI caption generation for social media posts  
+• Prompt generator for AI tools  
+• Simple, distraction-free interface  
+• Free and paid usage limits  
+• Web-based access with no installation required  
 
 **My Role**  
-Founder & solo full-stack engineer — led product concept, UX/UI design, system architecture, backend + frontend development, and deployment.
+Founder and solo full-stack engineer. I handled the product concept, UI planning, system architecture, frontend, backend, AI integration, and deployment.
 
 **Tech Stack**  
-Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Zustand, TailwindCSS, shadcn/ui, and Vercel.
+Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Zustand, TailwindCSS, shadcn/ui, Vercel AI SDK, and Vercel.
 `,
 
       technologies: [
@@ -223,26 +226,27 @@ Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Zustand, TailwindCSS, 
       dates: "Aug 2024 - Sep 2024",
       active: true,
       description: `
-**Overview**
-Token Talent HR is a **mobile-first HR tech platform** designed to help companies manage employee attendance, leave requests, and payroll workflows.
+**Overview**  
+Token Talent HR is a mobile-first HR platform for attendance, leave management, and payroll-related workflows.
 
-**Context**
-I worked on this product during my **internship** with a development team, contributing to back-end development and API integration.
+**Context**  
+I contributed to this product during my internship as part of a development team, mainly on backend development and API integration.
 
 **My Contributions**  
-• Assisted in developing RESTful APIs using Express.js and MongoDB  
-• Built secure authentication flows using JWT  
-• Helped implement attendance and leave endpoints for mobile consumption  
-• Collaborated with front-end and mobile developers to test and debug API responses
+• Assisted in building REST APIs with Express.js and MongoDB  
+• Implemented JWT-based authentication flows  
+• Helped develop attendance and leave-related API endpoints  
+• Worked with frontend and mobile developers to test, debug, and refine API responses  
 
-**Learning Outcome**
-This internship provided hands-on experience in building production-ready back-end systems, improved my API design skills, and strengthened my collaboration within a multi-disciplinary engineering team.
+**Learning Outcome**  
+This internship gave me practical experience with backend systems, API design, authentication, and collaboration inside a multi-disciplinary development team.
 
-**Tech Stack**
-Node.js, Express.js, MongoDB, JWT, REST APIs, Git.
+**Tech Stack**  
+Node.js, Express.js, MongoDB, JWT, REST APIs, and Git.
 
-**Status**
-The app is live and being used by HR departments to streamline operations across a growing user base.`,
+**Status**  
+The platform is live and supports HR operations for its users.
+`,
       technologies: [
         "JavaScript",
         "Node.js",
@@ -267,29 +271,30 @@ The app is live and being used by HR departments to streamline operations across
       dates: "Dec 2024 - Feb 2025",
       active: true,
       description: `
-**Overview**
-AlmTraders is a leading wholesale distributor with over 30 years of experience in global IT hardware trading and exports. Their digital presence was outdated and lacked modern UX standards, making it difficult for international clients to access product information.
+**Overview**  
+AlmTraders is a wholesale distributor in the global IT hardware trading and export market. The company needed a professional web presence to present its business, products, and credibility to international buyers.
 
-**Problem**
-Before this project, AlmTraders had no online presence, which significantly limited their ability to attract and engage international buyers. As a global wholesale IT trading business, the absence of a professional website was causing them to lose potential clients, weaken brand credibility, and miss out on organic search opportunities in competitive export markets.
+**Problem**  
+The business had limited online presence, which made it harder for potential buyers to understand its services, product categories, and market positioning.
 
-**Solution**
-I redesigned and developed their website using **Next.js, TypeScript, and TailwindCSS**, creating a performance-optimized, mobile-responsive, and SEO-friendly web presence. I structured the content using reusable components, integrated dynamic product listings, and set up meta tags for better indexing.
+**Solution**  
+I designed and developed a responsive website using Next.js, TypeScript, and TailwindCSS. The site uses reusable components, structured content, product-focused sections, and SEO-friendly implementation.
 
-**My Role**
-Full-stack developer – I led the front-end implementation, optimized performance, implemented design responsiveness, and collaborated with stakeholders to revise site architecture.
+**My Role**  
+Full-stack developer. I handled the frontend implementation, responsive layout, performance optimization, and stakeholder revisions.
 
 **Key Improvements**  
-• Modern UI aligned with B2B branding  
-• Optimized Lighthouse performance (95+)  
-• Improved Google search ranking with semantic tags and SSR  
-• Reduced page load time to under 1.2s on average
+• Modern B2B website structure  
+• Responsive layout for desktop and mobile  
+• SEO-friendly metadata and semantic structure  
+• Improved performance through Next.js and optimized frontend implementation  
 
-**Tech Stack**
-Next.js, TypeScript, React, TailwindCSS, Vercel.
+**Tech Stack**  
+Next.js, TypeScript, React, TailwindCSS, and Vercel.
 
-**Status**
-The live website is now accessible at almtraders.org, delivering a professional first impression to partners worldwide.`,
+**Status**  
+The website is live and gives AlmTraders a more credible digital presence for partners and buyers.
+`,
       technologies: ["Next.js", "Typescript", "Tailwind CSS", "React"],
       links: [
         {
@@ -307,26 +312,25 @@ The live website is now accessible at almtraders.org, delivering a professional 
       active: true,
       description: `
 **Overview**  
-Sysvelop is a full-service software company offering custom web, mobile, and digital product development solutions to global clients. The website serves as the company's digital identity, portfolio showcase, and lead-generation hub.
+Sysvelop is a software company offering web, mobile, and digital product development services. The website acts as its company profile, service showcase, and lead-generation channel.
 
 **Problem**  
-Prior to this redesign, Sysvelop's online presence lacked modern UI/UX design, responsive behavior, and conversion-focused content structure. This limited its ability to build trust with international clients and convert website visitors into leads.
+The previous website needed a stronger structure, improved responsiveness, and clearer service presentation to build trust with potential clients.
 
 **Solution**  
-I designed and developed a modern, high-performance marketing website using a component-based architecture with Next.js and TypeScript. The site is fully responsive, optimized for SEO and speed, and integrates seamlessly with lead capture workflows.
+I developed a modern marketing website using Next.js, TypeScript, TailwindCSS, and shadcn/ui. The site is responsive, performance-focused, and structured around service clarity and lead generation.
 
 **My Role**  
-As the lead front-end engineer, I handled:  
-• UI/UX implementation using shadcn/ui and TailwindCSS  
-• SEO optimization with metadata and structured schema
+Lead front-end engineer. I implemented the UI, built reusable components, handled responsive behavior, and worked on SEO-related metadata and structure.
 
 **Key Results**  
-• 60% increase in average session duration  
-• 2x increase in qualified lead submissions within 3 months  
-• Lighthouse scores above 95 across performance, accessibility, and SEO
+• Improved service presentation and website structure  
+• Responsive implementation across screen sizes  
+• Lighthouse scores above 95 across key categories  
+• Lead capture flow integrated into the site  
 
 **Tech Stack**  
-Next.js, React, TypeScript, TailwindCSS, shadcn/ui, Vercel, HubSpot.
+Next.js, React, TypeScript, TailwindCSS, shadcn/ui, Vercel, and HubSpot.
 `,
 
       technologies: [
@@ -352,27 +356,25 @@ Next.js, React, TypeScript, TailwindCSS, shadcn/ui, Vercel, HubSpot.
       active: true,
       description: `
 **Overview**  
-Agencio is an **all-in-one, multi-tenant agency-management SaaS** built for digital agencies, freelancers, and in-house teams.  
-It unifies client CRM, project & task pipelines, secure file storage, and an AI-assisted knowledge base into a single, searchable workspace—eliminating the need to juggle six or more disconnected tools.
+Agencio is a multi-tenant agency management SaaS for digital agencies, freelancers, and internal teams. It brings client management, project workflows, file organization, and AI-assisted knowledge access into one workspace.
 
 **Problem**  
-Most agencies rely on a fragmented tool stack—Trello/Jira, Slack, Google Drive, Notion, spreadsheets—leading to constant context-switching, data silos, and lost billable hours.  
-Internal research showed that a mid-sized agency lost **~6 hours per employee per week** due to these inefficiencies.
+Small agencies often manage work across too many disconnected tools: task boards, chat apps, cloud storage, documents, and spreadsheets. This creates context switching, scattered information, and operational friction.
 
 **Solution**  
-Agencio consolidates workflows behind a unified UI and role-based permission model.  
-Its modular architecture allows teams to activate only the features they need, while co-locating data to support contextual AI insights.
+Agencio centralizes core agency workflows behind a role-based system. Teams can manage projects, clients, files, and internal knowledge from one application while keeping access controlled across different user roles.
 
 **Key Features**  
-• Kanban & Gantt project pipelines  
-• Client & team chat (post-MVP)  
-• Granular file buckets with RBAC access controls  
-• AI assistant (powered by Gemini) for answering project queries  
-• Stripe-powered subscription & usage-based billing  
-• Invite-based onboarding with role segmentation (Owner, Admin, Member, Client)
+• Kanban and Gantt-style project workflows  
+• Client and team collaboration features  
+• Role-based access control  
+• File organization by workspace and permission level  
+• AI assistant powered by Gemini  
+• Stripe-based subscription and billing flows  
+• Invite-based onboarding for Owners, Admins, Members, and Clients  
 
 **My Role**  
-Founder & solo full-stack engineer — led product strategy, UX design, system architecture, backend + frontend implementation, and early customer success.
+Founder and solo full-stack engineer. I worked on product strategy, UX planning, system architecture, frontend, backend, billing integration, and deployment.
 
 **Tech Stack**  
 Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Stripe, Zustand, TailwindCSS, shadcn/ui, and Vercel.
@@ -407,7 +409,7 @@ Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Stripe, Zustand, Tailw
       dates: "December 2025",
       location: "Lahore, PK",
       description:
-        "Appointed as the Web Development Lead at UMT ACM, where I am responsible for planning, managing, and executing technical workshops and web-focused events. This role allows me to engage with the developer community, coordinate cross-functional activities, and ensure high-quality learning experiences for students. Through this position, I continue to refine my leadership, communication, and technical facilitation capabilities.",
+        "Appointed as Web Development Lead at UMT ACM. I help plan and execute web-focused workshops, technical sessions, and student developer events. The role involves coordinating event ideas, supporting community learning, and helping students gain practical exposure to modern web development.",
       image: "/acm.jpg",
       mlh: "",
       links: [],
@@ -417,7 +419,7 @@ Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Stripe, Zustand, Tailw
       dates: "June 2025",
       location: "Lahore, PK",
       description:
-        "I had the opportunity to be part of the management team for TechVerse, a 12-hour hackathon hosted by UMT. It was an incredible experience that allowed me to contribute to event coordination, collaborate with participants and organizers, and gain firsthand exposure to managing a fast-paced tech event. On the third day, I also took part in the project evaluation process, reviewing innovative solutions built under pressure. It was a rewarding and insightful experience that strengthened both my organizational and teamwork skills.",
+        "Served on the management team for TechVerse, a 12-hour hackathon hosted by UMT. I helped with event coordination, supported participants and organizers, and took part in the project evaluation process. The experience strengthened my coordination, communication, and teamwork skills in a fast-paced technical environment.",
       image: "/techverse.jpg",
       mlh: "",
       links: [],
@@ -427,45 +429,45 @@ Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Stripe, Zustand, Tailw
       dates: "Feb 2025",
       location: "Topi, KPK",
       description:
-        "I participated in the Softcom '25 Hackathon, a collaboration between UMT and GIKI, as part of a team of three members, alongside two friends. This experience allowed me to dive into a competitive tech environment, where we worked together to solve complex problems and develop innovative solutions. Although we didn't win, the event was an excellent learning opportunity, helping me refine my skills in teamwork, problem-solving, and creative thinking. It was a great chance to network with other tech enthusiasts and gain insights that will guide my future projects.",
+        "Participated in the Softcom '25 Hackathon, organized through a UMT and GIKI collaboration. I worked in a three-member team to solve a technical problem under time constraints. Although we did not win, the event gave me stronger exposure to teamwork, rapid problem-solving, and building under pressure.",
       image: "/acm.jpg",
       mlh: "",
       links: [],
     },
   ],
-  upworkCatalog: [
-    {
-      title:
-        "You will get a custom web application with React, Node.js, and MongoDB (MERN stack)",
-      description: `Get a Custom Web Application Built with React, Node.js & MongoDB
-        
-        Looking for a modern, scalable web app that drives business growth? I develop end-to-end MERN stack solutions (React, Next.js, Node.js, Express, MongoDB, TypeScript) tailored to your needs.
-        `,
-      image: "/upwork-1.png",
-      price: "$200",
-      links: [
-        {
-          type: "View on UpWork",
-          href: "https://www.upwork.com/services/product/development-it-a-full-stack-web-application-react-express-node-mongodb-next-js-1937020686195953071?ref=project_share",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-    },
-    {
-      title:
-        "You will get Fully Functional MERN Stack Web App Tailored to Your Need",
-      description: `Get a custom, high-performance full-stack web application tailored to your needs. I deliver scalable, user-friendly solutions with modern features, fast turnaround, and seamless management of both front-end and back-end development.`,
-      image: "/upwork-2.jpg",
-      price: "$149",
-      links: [
-        {
-          type: "View on UpWork",
-          href: "https://www.upwork.com/services/product/development-it-custom-full-stack-project-with-mern-stack-for-efficient-management-1840848611497964885?ref=project_share",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-    },
-  ],
+  // upworkCatalog: [
+  //   {
+  //     title:
+  //       "You will get a custom web application with React, Node.js, and MongoDB (MERN stack)",
+  //     description: `Get a Custom Web Application Built with React, Node.js & MongoDB
+
+  //       Looking for a modern, scalable web app that drives business growth? I develop end-to-end MERN stack solutions (React, Next.js, Node.js, Express, MongoDB, TypeScript) tailored to your needs.
+  //       `,
+  //     image: "/upwork-1.png",
+  //     price: "$200",
+  //     links: [
+  //       {
+  //         type: "View on UpWork",
+  //         href: "https://www.upwork.com/services/product/development-it-a-full-stack-web-application-react-express-node-mongodb-next-js-1937020686195953071?ref=project_share",
+  //         icon: <Icons.globe className="size-3" />,
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     title:
+  //       "You will get Fully Functional MERN Stack Web App Tailored to Your Need",
+  //     description: `Get a custom, high-performance full-stack web application tailored to your needs. I deliver scalable, user-friendly solutions with modern features, fast turnaround, and seamless management of both front-end and back-end development.`,
+  //     image: "/upwork-2.jpg",
+  //     price: "$149",
+  //     links: [
+  //       {
+  //         type: "View on UpWork",
+  //         href: "https://www.upwork.com/services/product/development-it-custom-full-stack-project-with-mern-stack-for-efficient-management-1840848611497964885?ref=project_share",
+  //         icon: <Icons.globe className="size-3" />,
+  //       },
+  //     ],
+  //   },
+  // ],
   // fiverrCatalog: [
   //   {
   //     title: "I will be your Node.js backend developer",

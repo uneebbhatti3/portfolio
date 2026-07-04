@@ -230,7 +230,7 @@ export default async function Page() {
       </section> */}
       <section id="upwork-catalog">
         <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 17}>
+          {/* <BlurFade delay={BLUR_FADE_DELAY * 17}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-green-600 text-white px-3 py-1 text-sm">
@@ -245,8 +245,8 @@ export default async function Page() {
                 </p>
               </div>
             </div>
-          </BlurFade>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
+          </BlurFade> */}
+          {/* <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
             {DATA.upworkCatalog.map((item, id) => (
               <BlurFade
                 key={item.title}
@@ -263,7 +263,7 @@ export default async function Page() {
                 />
               </BlurFade>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
       <section id="hackathons">
@@ -309,38 +309,69 @@ export default async function Page() {
         </div>
       </section>
       <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
+        <div className="grid w-full items-center justify-center gap-4 px-4 py-12 text-center md:px-6">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+            <div className="space-y-5">
+              <div className="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
                 Contact
               </div>
+
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in Touch
+                Have an idea? Let&apos;s talk.
               </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
+
+              <p className="mx-auto max-w-[650px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Whether you&apos;re building a product, hiring a developer, or
+                just want to talk about startups, AI, or something interesting
+                on the web — feel free to reach out.
+              </p>
+
+              <p className="mx-auto max-w-[600px] text-sm text-muted-foreground md:text-base">
+                The easiest way to reach me is on WhatsApp at{" "}
                 <Link
-                  href={`https://wa.me/${DATA.contact.tel.replace(
-                    /[^\d]/g,
-                    ""
-                  )}`}
-                  className="text-blue-500 hover:underline"
+                  href={`https://wa.me/${DATA.contact.tel.replace(/[^\d]/g, "")}`}
+                  className="font-medium text-blue-500 hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {DATA.contact.tel}
-                </Link>{" "}
-                with a direct question on whatsapp
-              </p>
-              <Button
-                className="bg-[#5f7fff] text-white font-bold text-xl py-[24px] hover:bg-[#6c8aff]"
-                asChild
-              >
-                <Link href={"https://buymeacoffee.com/uneebbhatti"}>
-                  ☕ Buy me a coffee
                 </Link>
-              </Button>
+                . I usually prefer a direct message over a mysterious
+                &quot;Hi&quot; followed by complete silence.
+              </p>
+
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <Button
+                  className="bg-[#5f7fff] px-6 py-[24px] text-base font-semibold text-white hover:bg-[#6c8aff]"
+                  asChild
+                >
+                  <Link
+                    href={`https://wa.me/${DATA.contact.tel.replace(/[^\d]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Message me on WhatsApp
+                  </Link>
+                </Button>
+
+                <Button variant="outline" className="px-6 py-[24px]" asChild>
+                  <Link href={`mailto:${DATA.contact.email}`}>
+                    Send an email
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="pt-3">
+                <Link
+                  href="https://buymeacoffee.com/uneebbhatti"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground underline"
+                >
+                  ☕ Enjoyed something I built or wrote? You can buy me a
+                  coffee.
+                </Link>
+              </div>
             </div>
           </BlurFade>
         </div>
