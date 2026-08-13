@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx tsc:*)",
+      "Bash(./node_modules/.bin/tsc --noEmit)",
+      "Bash(pnpm build:*)",
+      "Bash(./node_modules/.bin/next build:*)",
+      "Bash(pnpm add:*)",
+      "Bash(grep -h \"^export {\" /e/Uneeb/portfolio/uneeb-portfolio/src/components/svgs/*.tsx)"
+    ]
+  }
+}
