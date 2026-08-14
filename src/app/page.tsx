@@ -27,7 +27,7 @@ export default function Page() {
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
               <BlurFadeText
-                className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
+                className="text-muted-foreground max-w-150 md:text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -123,7 +123,7 @@ export default function Page() {
             {DATA.skills.map((skill, id) => (
               <BlurFade key={id} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
                 <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-3 flex items-center gap-2">
-                  <skill.icon className="size-4 shrink-0" />
+                  <skill.icon />
                   <span className="text-foreground text-sm font-medium">
                     {skill.name}
                   </span>
