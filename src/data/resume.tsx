@@ -192,48 +192,58 @@ When I'm away from my laptop, I'm usually already thinking about the next produc
   ],
   projects: [
     {
-      // TODO: Fill in real dates, href, image, and technologies below.
-      // This entry exists because CodDock is named as your current flagship
-      // project in the bio ("Right now, I'm working on CodDock") but had
-      // no corresponding project card — visitors reading the bio had
-      // nowhere to actually see it.
       title: "CodDock",
-      href: "https://TODO-add-real-url.com/",
-      dates: "TODO - Present",
+      href: "https://coddock.vercel.app/",
+      dates: "August 2026 - Present",
       active: true,
       description: `
 **Overview**  
-CodDock is a platform focused on helping aspiring Pakistani developers learn practical skills, build real projects, prepare for interviews, and move closer to freelance opportunities or software engineering jobs.
+CodDock is a developer growth platform designed for aspiring software engineers in Pakistan. It brings structured learning roadmaps, practical project building, coding practice, interview preparation, and career resources into a single ecosystem — helping developers move from learning concepts to building proof of skill and becoming job-ready.
 
 **Problem**  
-TODO: what specific gap does CodDock fill that tutorials, bootcamps, or existing platforms don't?
+Aspiring developers often have access to more tutorials than they can realistically follow, but lack a clear path from learning to employment. Resources are fragmented across courses, YouTube, coding platforms, communities, and freelancing websites, making it difficult to know what to learn, what to build, how to prepare for interviews, and what employers actually expect. CodDock addresses this gap by turning an otherwise fragmented developer journey into a structured progression from learning to building, preparing, and eventually earning.
 
 **Solution**  
-TODO: describe how CodDock actually works — the core flow a user goes through.
+CodDock is built around a simple progression: **Learn → Build → Prepare → Earn**. Developers can follow structured technology roadmaps, strengthen their skills through practical challenges, build portfolio-worthy projects, prepare for technical interviews, and access career-focused resources. The platform is designed to provide context around what to learn next and why, rather than simply presenting another collection of tutorials.
 
 **Key Features**  
-- TODO  
-- TODO  
-- TODO  
+- Structured learning roadmaps covering frontend, backend, AI, and other software engineering paths  
+- Practical coding challenges and project-based learning focused on building real-world skills  
+- Interview preparation resources for technical concepts, DSA, and software engineering roles  
+- Developer community designed around learning, collaboration, mentorship, and career growth  
+- AI-powered career tools for resume feedback, portfolio improvement, and personalized learning guidance  
+- Company and career insights to help developers better understand hiring expectations and opportunities  
+- Learn → Build → Prepare → Earn progression that connects technical learning with real career outcomes  
 
 **My Role**  
-TODO
+Founder and full-stack developer. I defined the product vision, researched the problems faced by early-career developers, designed the product architecture and user experience, and handled the full-stack implementation. I am responsible for turning the platform from an initial concept into a scalable developer ecosystem.
 
 **Tech Stack**  
-TODO
+Next.js, TypeScript, React, TailwindCSS, PostgreSQL, Prisma, AI SDKs, and Vercel.
 
 **Status**  
-TODO — e.g. in development, in private beta, live with N users, etc.
+In active development — the product is being built incrementally around the core developer learning and career journey, with the initial platform and foundation currently being developed.
 `,
-      technologies: ["TODO"],
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "React",
+        "PostgreSQL",
+        "Prisma",
+        "Tailwind CSS",
+        "AI Applications",
+        "AI SDKs",
+        "Full-stack Development",
+        "EdTech",
+      ],
       links: [
         {
           type: "Website",
-          href: "https://TODO-add-real-url.com/",
+          href: "https://coddock.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/TODO-add-image.png",
+      image: "/coddock.jpg",
     },
     {
       title: "The Buff",
@@ -287,61 +297,6 @@ Live and in active development — the booking engine and AI assistant are funct
       ],
       image: "/the-buff.jpg",
     },
-    {
-      title: "Capto AI",
-      href: "https://capto-ai.vercel.app/",
-      dates: "August 2025 - Present",
-      active: true,
-      description: `
-**Overview**  
-Capto AI is a content creation assistant for creators, marketers, and entrepreneurs who need faster ways to generate captions and AI prompts.
-
-It includes two main tools: a **Captions Generator** for short-form social content and a **Prompt Generator** for creating clearer prompts for AI tools.
-
-**Problem**  
-Creators often lose time writing captions or trying to get useful output from AI tools. A weak prompt usually leads to generic results, repeated attempts, and inconsistent content quality.
-
-**Solution**  
-Capto AI keeps the workflow simple: users enter an idea or topic, choose the tool they need, and get usable output without dealing with complex settings.
-
-**Key Features**  
-• AI caption generation for social media posts  
-• Prompt generator for AI tools  
-• Simple, distraction-free interface  
-• Free and paid usage limits  
-• Web-based access with no installation required  
-
-**My Role**  
-Founder and solo full-stack engineer. I handled the product concept, UI planning, system architecture, frontend, backend, AI integration, and deployment.
-
-**Tech Stack**  
-Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Zustand, TailwindCSS, shadcn/ui, Vercel AI SDK, and Vercel.
-`,
-
-      technologies: [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "MongoDB",
-        "Express.js",
-        "Node.js",
-        "Tailwind CSS",
-        "Shadcn UI",
-        "Web Development",
-        "Full-stack Development",
-        "AI",
-        "Vercel AI SDK",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://capto-ai.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/capto-ai.png",
-    },
-
     {
       title: "Token Talent HR",
       href: "https://tokentalent.co/",
