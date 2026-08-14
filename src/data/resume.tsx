@@ -36,26 +36,26 @@ export const DATA = {
   summary: `
 I have a small problem: once an idea gets stuck in my head, I usually end up trying to build it.
 
-Sometimes it becomes a weekend experiment. Sometimes I keep building it for months and start thinking, “okay, this one might actually become a real product.” So far, no luck — but the 2 AM bug discoveries have been very consistent.
+Sometimes it becomes a weekend experiment. Sometimes I keep building it for months and start thinking, “okay, this one might actually become a real product.” The 2 AM bug discoveries, at least, have been very consistent.
 
 I'm a full-stack developer and BSIT student at UMT who enjoys building software from the ground up—figuring out how an idea should work, designing the experience, building the backend, connecting everything together, and eventually shipping it.
 
 These days, I mostly work with **Next.js, Node.js, TypeScript, and AI**, while going deeper into backend engineering, system design, and how production applications actually work beyond the happy path.
 
-I'm also the **Web Development Lead at UMT ACM**, where I'll be helping organize technical workshops and developer-focused sessions for students who want to move beyond tutorials, experiment with real tools, and build things that actually work outside the classroom.
+I'm also the **Web Development Lead at UMT ACM**, where I organize technical workshops and developer-focused sessions for students who want to move beyond tutorials, experiment with real tools, and build things that actually work outside the classroom.
 
 Right now, I'm working on **CodDock**, a platform focused on helping aspiring Pakistani developers learn practical skills, build projects, prepare for interviews, and move closer to freelance opportunities or software engineering jobs.
 
 A few things I genuinely enjoy:
 
-• Building full-stack products  
-• Designing backend APIs  
-• Experimenting with AI  
-• Turning ideas into MVPs  
-• Creating clean, responsive interfaces  
-• Learning how good software behaves once real users get involved  
+- Building full-stack products  
+- Designing backend APIs  
+- Experimenting with AI  
+- Turning ideas into MVPs  
+- Creating clean, responsive interfaces  
+- Learning how good software behaves once real users get involved  
 
-When I'm away from my laptop, I'm usually thinking about the next product I want to build... or convincing myself this deployment definitely won't fail this time.`,
+When I'm away from my laptop, I'm usually already thinking about the next product I want to build, or still poking at the last one to see what else breaks.`,
   avatarUrl: "/uneeb.png",
   skills: [
     { name: "React", icon: ReactIcon },
@@ -70,7 +70,7 @@ When I'm away from my laptop, I'm usually thinking about the next product I want
     { name: "HTML", icon: HTMLIcon },
     { name: "CSS", icon: CSSIcon },
     { name: "Postman", icon: PostmanIcon },
-    { name: "TailwindCSS", icon: TailwindCSSIcon },
+    { name: "Tailwind CSS", icon: TailwindCSSIcon },
     { name: "Figma", icon: FigmaIcon },
     { name: "Shadcn UI", icon: ShadcnUIIcon },
     { name: "Adobe Illustrator", icon: AdobeIllustratorIcon },
@@ -192,6 +192,50 @@ When I'm away from my laptop, I'm usually thinking about the next product I want
   ],
   projects: [
     {
+      // TODO: Fill in real dates, href, image, and technologies below.
+      // This entry exists because CodDock is named as your current flagship
+      // project in the bio ("Right now, I'm working on CodDock") but had
+      // no corresponding project card — visitors reading the bio had
+      // nowhere to actually see it.
+      title: "CodDock",
+      href: "https://TODO-add-real-url.com/",
+      dates: "TODO - Present",
+      active: true,
+      description: `
+**Overview**  
+CodDock is a platform focused on helping aspiring Pakistani developers learn practical skills, build real projects, prepare for interviews, and move closer to freelance opportunities or software engineering jobs.
+
+**Problem**  
+TODO: what specific gap does CodDock fill that tutorials, bootcamps, or existing platforms don't?
+
+**Solution**  
+TODO: describe how CodDock actually works — the core flow a user goes through.
+
+**Key Features**  
+- TODO  
+- TODO  
+- TODO  
+
+**My Role**  
+TODO
+
+**Tech Stack**  
+TODO
+
+**Status**  
+TODO — e.g. in development, in private beta, live with N users, etc.
+`,
+      technologies: ["TODO"],
+      links: [
+        {
+          type: "Website",
+          href: "https://TODO-add-real-url.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/TODO-add-image.png",
+    },
+    {
       title: "The Buff",
       href: "https://thebuffdetailing.vercel.app/",
       dates: "July 2026 - Present",
@@ -225,10 +269,10 @@ Live and in active development — the booking engine and AI assistant are funct
 `,
       technologies: [
         "Next.js",
-        "Typescript",
+        "TypeScript",
         "PostgreSQL",
         "Prisma",
-        "TailwindCSS",
+        "Tailwind CSS",
         "Shadcn UI",
         "AI Agents",
         "Google ADK",
@@ -242,63 +286,6 @@ Live and in active development — the booking engine and AI assistant are funct
         },
       ],
       image: "/the-buff.jpg",
-    },
-    {
-      title: "Codemaven Solutions",
-      href: "https://codemavensolutions.vercel.app/",
-      dates: "Jul 2024 - May 2026",
-      active: false,
-      description: `
-**Overview**  
-Codemaven Solutions was a founder-led software development studio focused on building modern digital products for startups, businesses, and entrepreneurs. The company provided end-to-end services across web development, mobile applications, UI/UX design, and AI-powered solutions.
-
-**Mission**  
-The goal was to help businesses turn ideas into reliable, scalable digital products by combining product thinking, modern engineering practices, and thoughtful user experience design.
-
-**Services**  
-• Full-stack web application development  
-• Mobile application development  
-• UI/UX design and product prototyping  
-• AI-powered application development  
-• Custom software solutions  
-• API and backend development  
-• MVP development for startups and early-stage products  
-
-**My Role**  
-Founder and CEO. I was responsible for the complete operation of the venture, including business strategy, service positioning, product discovery, technical architecture, UX planning, software development, project execution, marketing, and client outreach.
-
-**Technical Focus**  
-I designed and developed modern full-stack applications using technologies such as Next.js, React, TypeScript, Node.js, PostgreSQL, MongoDB, Prisma, and TailwindCSS. I also explored and integrated modern AI technologies to build AI-assisted and AI-native application experiences.
-
-**Key Takeaways**  
-Building Codemaven Solutions gave me hands-on experience beyond software engineering. I learned how to think about products from both technical and business perspectives, validate ideas, communicate value, manage an end-to-end development process, and take ownership of a venture from concept through execution.
-`,
-
-      technologies: [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Node.js",
-        "Express.js",
-        "PostgreSQL",
-        "MongoDB",
-        "Prisma",
-        "TailwindCSS",
-        "AI Applications",
-        "UI/UX Design",
-        "Full-stack Development",
-        "Software Architecture",
-      ],
-
-      links: [
-        {
-          type: "Website",
-          href: "https://codemavensolutions.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-
-      image: "/codemaven-solutions.png",
     },
     {
       title: "Capto AI",
@@ -334,11 +321,11 @@ Next.js 15, React, TypeScript, Express.js, MongoDB Atlas, Zustand, TailwindCSS, 
       technologies: [
         "Next.js",
         "React",
-        "Typescript",
+        "TypeScript",
         "MongoDB",
         "Express.js",
         "Node.js",
-        "TailwindCSS",
+        "Tailwind CSS",
         "Shadcn UI",
         "Web Development",
         "Full-stack Development",
@@ -430,7 +417,7 @@ Next.js, TypeScript, React, TailwindCSS, and Vercel.
 **Status**  
 The website is live and gives AlmTraders a more credible digital presence for partners and buyers.
 `,
-      technologies: ["Next.js", "Typescript", "Tailwind CSS", "React"],
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
       links: [
         {
           type: "Website",
@@ -470,7 +457,7 @@ Next.js, React, TypeScript, TailwindCSS, shadcn/ui, Vercel, and HubSpot.
 
       technologies: [
         "Next.js",
-        "Typescript",
+        "TypeScript",
         "React",
         "Tailwind CSS",
         "Shadcn UI",
@@ -517,67 +504,4 @@ Next.js, React, TypeScript, TailwindCSS, shadcn/ui, Vercel, and HubSpot.
       links: [] as { href: string; icon: React.ReactNode; title: string }[],
     },
   ],
-  // upworkCatalog: [
-  //   {
-  //     title:
-  //       "You will get a custom web application with React, Node.js, and MongoDB (MERN stack)",
-  //     description: `Get a Custom Web Application Built with React, Node.js & MongoDB
-
-  //       Looking for a modern, scalable web app that drives business growth? I develop end-to-end MERN stack solutions (React, Next.js, Node.js, Express, MongoDB, TypeScript) tailored to your needs.
-  //       `,
-  //     image: "/upwork-1.png",
-  //     price: "$200",
-  //     links: [
-  //       {
-  //         type: "View on UpWork",
-  //         href: "https://www.upwork.com/services/product/development-it-a-full-stack-web-application-react-express-node-mongodb-next-js-1937020686195953071?ref=project_share",
-  //         icon: <Icons.globe className="size-3" />,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title:
-  //       "You will get Fully Functional MERN Stack Web App Tailored to Your Need",
-  //     description: `Get a custom, high-performance full-stack web application tailored to your needs. I deliver scalable, user-friendly solutions with modern features, fast turnaround, and seamless management of both front-end and back-end development.`,
-  //     image: "/upwork-2.jpg",
-  //     price: "$149",
-  //     links: [
-  //       {
-  //         type: "View on UpWork",
-  //         href: "https://www.upwork.com/services/product/development-it-custom-full-stack-project-with-mern-stack-for-efficient-management-1840848611497964885?ref=project_share",
-  //         icon: <Icons.globe className="size-3" />,
-  //       },
-  //     ],
-  //   },
-  // ],
-  // fiverrCatalog: [
-  //   {
-  //     title: "I will be your Node.js backend developer",
-  //     description:
-  //       "Looking for a reliable Node.js backend developer? You're in the right place. I specialize in building clean, scalable, and secure backend systems using modern technologies such as Node.js, Express, MongoDB, TypeScript, and REST APIs. Whether you're launching a startup, scaling your product, or integrating third-party services like Stripe, I deliver backend solutions that are tailored to your business goals.",
-  //     image: "/fiverr-1.png",
-  //     price: "$80",
-  //     links: [
-  //       {
-  //         type: "View on Fiverr",
-  //         href: "https://www.fiverr.com/s/P2DbomP",
-  //         icon: <Icons.globe className="size-3" />,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "I will build a full stackwebsite with the MERN stack",
-  //     description:
-  //       "Looking to build a scalable, secure, and high-performing web application from scratch? I specialize in developing end-to-end solutions using the MERN Stack (MongoDB, Express.js, React.js, Node.js) with TypeScript. From modern frontend interfaces to robust backend APIs, I deliver tailored solutions that align with your business goals.\n\nKey Deliverables:\n- Fully functional frontend and backend\n- Scalable and maintainable architecture\n- Custom APIs and database integration\n- JWT/OAuth-based authentication and RBAC\n- TailwindCSS-powered responsive UI\n- Admin dashboards and client panels\n- Third-party API integrations\n- Performance optimization and security best practices\n\nEvery project is built with precision, ensuring a seamless user experience and reliable backend operations. Let’s bring your vision to life—place your order or contact me to discuss your project.",
-  //     image: "/fiverr-2.jpg",
-  //     price: "$80",
-  //     links: [
-  //       {
-  //         type: "View on Fiverr",
-  //         href: "https://www.fiverr.com/s/EgNKQd9",
-  //         icon: <Icons.globe className="size-3" />,
-  //       },
-  //     ],
-  //   },
-  // ],
 } as const;
