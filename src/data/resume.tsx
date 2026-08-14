@@ -1,30 +1,28 @@
 import React from "react";
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
-import {
-  ReactIcon,
-  NextjsIcon,
-  JavaScriptIcon,
-  TypeScriptIcon,
-  NodejsIcon,
-  GitIcon,
-  GitHubIcon,
-  MongoDBIcon,
-  ExpressjsIcon,
-  HtmlIcon,
-  CssIcon,
-  PostmanIcon,
-  TailwindCSSIcon,
-  FigmaIcon,
-  ShadcnUIIcon,
-  AdobeIllustratorIcon,
-  AdobePhotoshopIcon,
-  GenerativeAIIcon,
-  VercelAIIcon,
-  DockerIcon,
-  PostgreSQLIcon,
-  GoogleADKIcon,
-} from "@/components/svgs";
+import { BotIcon, HomeIcon } from "lucide-react";
+import ReactIcon from "@/components/svgs/react-icon";
+import NextJSIcon from "@/components/svgs/nextjs-icon";
+import JavaScriptIcon from "@/components/svgs/javascript-icon";
+import TypeScriptIcon from "@/components/svgs/typescript-icon";
+import NodeJSIcon from "@/components/svgs/nodejs-icon";
+import GitIcon from "@/components/svgs/git-icon";
+import GitHubIcon from "@/components/svgs/github-icon";
+import MongoDBIcon from "@/components/svgs/mongodb-icon";
+import ExpressJSIcon from "@/components/svgs/expressjs-icon";
+import HTMLIcon from "@/components/svgs/html-icon";
+import CSSIcon from "@/components/svgs/css-icon";
+import PostmanIcon from "@/components/svgs/postman-icon";
+import TailwindCSSIcon from "@/components/svgs/tailwindcss-icon";
+import FigmaIcon from "@/components/svgs/figma-icon";
+import AdobeIllustratorIcon from "@/components/svgs/illustrator-icon";
+import AdobePhotoshopIcon from "@/components/svgs/photoshop-icon";
+import VercelIcon from "@/components/svgs/vercel-icon";
+import DockerIcon from "@/components/svgs/docker-icon";
+import PostgreSQLIcon from "@/components/svgs/postgresql-icon";
+import GoogleIcon from "@/components/svgs/goole-icon";
+import ShadcnUIIcon from "@/components/svgs/shadcn-icon";
+import GenerativeAIIcon from "@/components/svgs/generative-ai-icon";
 
 export const DATA = {
   name: "Uneeb Bhatti",
@@ -61,16 +59,16 @@ When I'm away from my laptop, I'm usually thinking about the next product I want
   avatarUrl: "/uneeb.png",
   skills: [
     { name: "React", icon: ReactIcon },
-    { name: "Next.js", icon: NextjsIcon },
+    { name: "Next.js", icon: NextJSIcon },
     { name: "JavaScript", icon: JavaScriptIcon },
     { name: "TypeScript", icon: TypeScriptIcon },
-    { name: "Node.js", icon: NodejsIcon },
+    { name: "Node.js", icon: NodeJSIcon },
     { name: "Git", icon: GitIcon },
     { name: "GitHub", icon: GitHubIcon },
     { name: "MongoDB", icon: MongoDBIcon },
-    { name: "Express.js", icon: ExpressjsIcon },
-    { name: "HTML", icon: HtmlIcon },
-    { name: "CSS", icon: CssIcon },
+    { name: "Express.js", icon: ExpressJSIcon },
+    { name: "HTML", icon: HTMLIcon },
+    { name: "CSS", icon: CSSIcon },
     { name: "Postman", icon: PostmanIcon },
     { name: "TailwindCSS", icon: TailwindCSSIcon },
     { name: "Figma", icon: FigmaIcon },
@@ -78,10 +76,10 @@ When I'm away from my laptop, I'm usually thinking about the next product I want
     { name: "Adobe Illustrator", icon: AdobeIllustratorIcon },
     { name: "Adobe Photoshop", icon: AdobePhotoshopIcon },
     { name: "Generative AI", icon: GenerativeAIIcon },
-    { name: "Vercel AI SDK", icon: VercelAIIcon },
+    { name: "Vercel AI SDK", icon: VercelIcon },
     { name: "Docker", icon: DockerIcon },
     { name: "PostgreSQL", icon: PostgreSQLIcon },
-    { name: "Google ADK", icon: GoogleADKIcon },
+    { name: "Google ADK", icon: GoogleIcon },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
