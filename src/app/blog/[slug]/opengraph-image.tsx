@@ -142,7 +142,8 @@ export default async function Image({
                             <div style={styles.wrapper}>
                                 {imageUrl && (
                                     <div style={styles.imageSection}>
-                                        <img src={imageUrl} alt="Blog Post" style={styles.image} />
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src={imageUrl} alt="Blog Post" style={styles.image} />
                                     </div>
                                 )}
                                 <div style={styles.mainContainer}>
@@ -186,6 +187,7 @@ export default async function Image({
                         <div style={styles.wrapper}>
                             {imageUrl && (
                                 <div style={styles.imageSection}>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img src={imageUrl} alt={title} style={styles.image} />
                                 </div>
                             )}

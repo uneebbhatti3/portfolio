@@ -232,5 +232,89 @@
   .prose :where(tbody tr:last-child td):not(:where([class~="not-prose"] *)) {
     @apply border-b-0;
   }
+}
 
+/* ── TipTap editor styles ─────────────────────────────────────────────────── */
+.ProseMirror {
+  @apply outline-none;
+}
+
+/* Placeholder */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  @apply pointer-events-none float-left h-0 text-muted-foreground;
+}
+
+/* Basic content styles (headings, lists, etc.) */
+.ProseMirror h1 { @apply text-2xl font-semibold tracking-tight mb-2 mt-4; }
+.ProseMirror h2 { @apply text-xl font-semibold tracking-tight mb-2 mt-4; }
+.ProseMirror h3 { @apply text-lg font-semibold tracking-tight mb-1 mt-3; }
+.ProseMirror p  { @apply leading-7 mb-2; }
+
+.ProseMirror ul { @apply list-disc pl-5 mb-2; }
+.ProseMirror ol { @apply list-decimal pl-5 mb-2; }
+.ProseMirror li { @apply mb-0.5; }
+
+.ProseMirror blockquote {
+  @apply border-l-4 border-amber-500 pl-4 italic bg-muted/50 p-3 rounded-r-md my-3;
+}
+
+.ProseMirror code {
+  @apply rounded bg-muted/60 px-1.5 py-0.5 font-mono text-[13px] text-foreground/90;
+}
+
+.ProseMirror pre {
+  @apply rounded-md bg-muted p-4 font-mono text-sm my-3 overflow-x-auto;
+}
+
+.ProseMirror pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.ProseMirror hr {
+  @apply my-4 border-border;
+}
+
+.ProseMirror a {
+  @apply text-primary underline underline-offset-4 cursor-pointer;
+}
+
+.ProseMirror img {
+  @apply max-w-full rounded-md my-2;
+}
+
+/* Task list */
+.ProseMirror ul[data-type="taskList"] {
+  @apply list-none pl-0;
+}
+.ProseMirror ul[data-type="taskList"] li {
+  @apply flex items-start gap-2;
+}
+.ProseMirror ul[data-type="taskList"] li > label {
+  @apply flex items-center pt-[3px];
+}
+.ProseMirror ul[data-type="taskList"] li > label input[type="checkbox"] {
+  @apply h-4 w-4 cursor-pointer rounded border border-input accent-primary;
+}
+
+/* Table */
+.ProseMirror table {
+  @apply w-full border-collapse my-3 text-sm;
+}
+.ProseMirror table th,
+.ProseMirror table td {
+  @apply border border-border px-3 py-2 align-top;
+}
+.ProseMirror table th {
+  @apply bg-muted font-semibold text-left;
+}
+.ProseMirror .selectedCell::after {
+  @apply absolute inset-0 bg-primary/10 pointer-events-none z-[2];
+  content: "";
+}
+.ProseMirror table .column-resize-handle {
+  @apply absolute -right-0.5 top-0 bottom-0 w-1 bg-primary/50 cursor-col-resize pointer-events-auto;
+}
+.ProseMirror .tableWrapper {
+  @apply overflow-x-auto;
 }

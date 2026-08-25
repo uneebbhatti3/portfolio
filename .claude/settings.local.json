@@ -8,7 +8,12 @@
       "Bash(pnpm build:*)",
       "Bash(./node_modules/.bin/next build:*)",
       "Bash(pnpm add:*)",
-      "Bash(grep -h \"^export {\" /e/Uneeb/portfolio/uneeb-portfolio/src/components/svgs/*.tsx)"
+      "Bash(grep -h \"^export {\" /e/Uneeb/portfolio/uneeb-portfolio/src/components/svgs/*.tsx)",
+      "Bash(npm install:*)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('dependencies',{}\\), indent=2\\)\\)\")",
+      "Bash(npm --version)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2\\)\\)\")",
+      "Bash(pnpm --version)"
     ]
   }
 }

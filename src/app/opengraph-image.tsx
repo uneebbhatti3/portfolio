@@ -119,6 +119,7 @@ export default async function Image() {
                         <div style={styles.wrapper}>
                             {imageUrl && (
                                 <div style={styles.imageSection}>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img src={imageUrl} alt={DATA.name} style={styles.image} />
                                 </div>
                             )}

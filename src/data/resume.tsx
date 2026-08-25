@@ -1,6 +1,6 @@
 import React from "react";
 import { Icons } from "@/components/icons";
-import { BotIcon, HomeIcon } from "lucide-react";
+import { BotIcon, HomeIcon, NotebookIcon } from "lucide-react";
 import ReactIcon from "@/components/svgs/react-icon";
 import NextJSIcon from "@/components/svgs/nextjs-icon";
 import JavaScriptIcon from "@/components/svgs/javascript-icon";
@@ -83,7 +83,7 @@ When I'm away from my laptop, I'm usually already thinking about the next produc
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    // { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
     email: "uneebbhatti3@gmail.com",

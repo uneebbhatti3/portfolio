@@ -8,6 +8,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -58,9 +59,20 @@ export default function Navbar() {
                   >
                     <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
                       {typeof icon === "string" ? (
-                        <img src={icon} alt={name} className="size-full rounded-sm overflow-hidden object-contain" />
+                        <Image
+                          src={icon}
+                          alt={name}
+                          width={32}
+                          height={32}
+                          className="size-full rounded-sm overflow-hidden object-contain"
+                        />
                       ) : (
-                        <>{icon({ className: "size-full rounded-sm overflow-hidden object-contain" })}</>
+                        <>
+                          {icon({
+                            className:
+                              "size-full rounded-sm overflow-hidden object-contain",
+                          })}
+                        </>
                       )}
                     </DockIcon>
                   </a>

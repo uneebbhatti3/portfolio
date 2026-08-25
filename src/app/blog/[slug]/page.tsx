@@ -1,115 +1,126 @@
-import { allPosts } from "content-collections";
-import { formatDate } from "@/lib/utils";
+import TipTapRenderer from "@/components/editor/tiptap-renderer";
 import { DATA } from "@/data/resume";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { MDXContent } from "@content-collections/mdx/react";
-import { mdxComponents } from "@/mdx-components";
-import Link from "next/link";
+import prisma from "@/lib/prisma";
+import { formatDate } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type { Metadata } from "next";
+import NextLink from "next/link";
+import { notFound } from "next/navigation";
+import { Prisma } from "../../../../generated/prisma/client";
 
-function getSortedPosts() {
-  return [...allPosts].sort((a, b) => {
-    if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
-      return -1;
-    }
-    return 1;
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
+const BLOG_SELECT = {
+  id: true,
+  slug: true,
+  title: true,
+  excerpt: true,
+  content: true,
+  coverImage: true,
+  author: true,
+  published: true,
+  publishedAt: true,
+  createdAt: true,
+} satisfies Prisma.BlogSelect;
+
+async function getBlogBySlug(slug: string) {
+  return prisma.blog.findFirst({
+    where: { slug, published: true },
+    select: BLOG_SELECT,
   });
 }
 
-export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post._meta.path.replace(/\.mdx$/, ""),
-  }));
+async function getAdjacentBlogs(currentPublishedAt: Date | null, currentId: string) {
+  const dateFilter = currentPublishedAt ?? new Date(0);
+
+  const [previous, next] = await Promise.all([
+    prisma.blog.findFirst({
+      where: {
+        published: true,
+        id: { not: currentId },
+        publishedAt: { gt: dateFilter },
+      },
+      orderBy: { publishedAt: "asc" },
+      select: { slug: true, title: true },
+    }),
+    prisma.blog.findFirst({
+      where: {
+        published: true,
+        id: { not: currentId },
+        publishedAt: { lt: dateFilter },
+      },
+      orderBy: { publishedAt: "desc" },
+      select: { slug: true, title: true },
+    }),
+  ]);
+
+  return { previous, next };
 }
+
+// ─── Metadata ───────────────────────────────────────────────────────────────
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
   const { slug } = await params;
-  const post = allPosts.find((p) => p._meta.path.replace(/\.mdx$/, "") === slug);
+  const blog = await getBlogBySlug(slug);
 
-  if (!post) {
-    return undefined;
-  }
+  if (!blog) return undefined;
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post;
+  const publishedTime = blog.publishedAt?.toISOString();
 
   return {
-    title,
-    description,
+    title: blog.title,
+    description: blog.excerpt ?? undefined,
     openGraph: {
-      title,
-      description,
+      title: blog.title,
+      description: blog.excerpt ?? undefined,
       type: "article",
       publishedTime,
-      url: `${DATA.url}/blog/${slug}`,
-      ...(image && {
-        images: [
-          {
-            url: `${DATA.url}${image}`,
-          },
-        ],
+      url: `${DATA.url}blog/${slug}`,
+      ...(blog.coverImage && {
+        images: [{ url: blog.coverImage }],
       }),
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      ...(image && {
-        images: [`${DATA.url}${image}`],
+      title: blog.title,
+      description: blog.excerpt ?? undefined,
+      ...(blog.coverImage && {
+        images: [blog.coverImage],
       }),
     },
   };
 }
 
-export default async function Blog({
+// ─── Page ───────────────────────────────────────────────────────────────────
+
+export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const sortedPosts = getSortedPosts();
-  const currentIndex = sortedPosts.findIndex(
-    (p) => p._meta.path.replace(/\.mdx$/, "") === slug
-  );
-  const post = sortedPosts[currentIndex];
+  const blog = await getBlogBySlug(slug);
 
-  if (!post) {
-    notFound();
-  }
+  if (!blog) notFound();
 
-  const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
-  const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
+  const { previous, next } = await getAdjacentBlogs(blog.publishedAt, blog.id);
 
-  const getSlug = (post: (typeof sortedPosts)[0]) =>
-    post._meta.path.replace(/\.mdx$/, "");
-
-  const jsonLdContent = JSON.stringify({
+  const jsonLd = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
-    datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
-    description: post.summary,
-    image: post.image
-      ? `${DATA.url}${post.image}`
-      : `${DATA.url}/blog/${slug}/opengraph-image`,
-    url: `${DATA.url}/blog/${slug}`,
+    headline: blog.title,
+    datePublished: blog.publishedAt?.toISOString(),
+    dateModified: blog.publishedAt?.toISOString(),
+    description: blog.excerpt,
+    ...(blog.coverImage && { image: blog.coverImage }),
+    url: `${DATA.url}blog/${slug}`,
     author: {
       "@type": "Person",
-      name: DATA.name,
+      name: blog.author,
     },
   }).replace(/</g, "\\u003c");
 
@@ -118,24 +129,44 @@ export default async function Blog({
       <script
         type="application/ld+json"
         suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: jsonLdContent,
-        }}
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
       />
-      <div className="flex justify-start gap-4 items-center">
-        <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-lg px-2 py-1 inline-flex items-center gap-1 mb-6 group" aria-label="Back to Blog">
-          <ChevronLeft className="size-3 group-hover:-translate-x-px transition-transform" />
-          Back to Blog
-        </Link>
-      </div>
+
+      <NextLink
+        href="/blog"
+        className="text-sm text-muted-foreground hover:text-foreground transition-colors border border-border rounded-lg px-2 py-1 inline-flex items-center gap-1 mb-6 group"
+        aria-label="Back to Blog"
+      >
+        <ChevronLeft className="size-3 group-hover:-translate-x-px transition-transform" />
+        Back to Blog
+      </NextLink>
+
       <div className="flex flex-col gap-4">
-        <h1 className="title font-semibold text-3xl md:text-4xl tracking-tighter leading-tight">
-          {post.title}
+        <h1 className="font-semibold text-3xl md:text-4xl tracking-tighter leading-tight">
+          {blog.title}
         </h1>
-        <p className="text-sm text-muted-foreground">
-          {formatDate(post.publishedAt)}
-        </p>
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <span>{blog.author}</span>
+          <span>·</span>
+          <time dateTime={blog.publishedAt?.toISOString()}>
+            {blog.publishedAt
+              ? formatDate(blog.publishedAt)
+              : formatDate(blog.createdAt)}
+          </time>
+        </div>
       </div>
+
+      {blog.coverImage && (
+        <div className="my-6 overflow-hidden rounded-xl border border-border">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={blog.coverImage}
+            alt={blog.title}
+            className="w-full object-cover"
+          />
+        </div>
+      )}
+
       <div className="my-6 flex w-full items-center">
         <div
           className="flex-1 h-px bg-border"
@@ -147,42 +178,41 @@ export default async function Blog({
           }}
         />
       </div>
-      <article className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-        <MDXContent code={post.mdx} components={mdxComponents} />
-      </article>
 
-      <nav className="mt-12 pt-8 max-w-2xl">
+      <TipTapRenderer content={blog.content as Record<string, unknown>} />
+
+      <nav aria-label="Post navigation" className="mt-12 pt-8 max-w-2xl">
         <div className="flex flex-col sm:flex-row justify-between gap-4">
-          {previousPost ? (
-            <Link
-              href={`/blog/${getSlug(previousPost)}`}
+          {previous ? (
+            <NextLink
+              href={`/blog/${previous.slug}`}
               className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors"
             >
               <span className="flex items-center gap-1 text-xs text-muted-foreground">
                 <ChevronLeft className="size-3" />
                 Previous
               </span>
-              <span className="text-sm font-medium group-hover:text-foreground transition-colors whitespace-normal wrap-break-word">
-                {previousPost.title}
+              <span className="text-sm font-medium group-hover:text-foreground transition-colors">
+                {previous.title}
               </span>
-            </Link>
+            </NextLink>
           ) : (
             <div className="hidden sm:block flex-1" />
           )}
 
-          {nextPost ? (
-            <Link
-              href={`/blog/${getSlug(nextPost)}`}
+          {next ? (
+            <NextLink
+              href={`/blog/${next.slug}`}
               className="group flex-1 flex flex-col gap-1 p-4 rounded-lg border border-border hover:bg-accent/50 transition-colors text-right"
             >
               <span className="flex items-center justify-end gap-1 text-xs text-muted-foreground">
                 Next
                 <ChevronRight className="size-3" />
               </span>
-              <span className="text-sm font-medium group-hover:text-foreground transition-colors whitespace-normal wrap-break-word">
-                {nextPost.title}
+              <span className="text-sm font-medium group-hover:text-foreground transition-colors">
+                {next.title}
               </span>
-            </Link>
+            </NextLink>
           ) : (
             <div className="hidden sm:block flex-1" />
           )}
