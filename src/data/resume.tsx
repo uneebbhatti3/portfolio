@@ -56,7 +56,7 @@ A few things I genuinely enjoy:
 - Learning how good software behaves once real users get involved  
 
 When I'm away from my laptop, I'm usually already thinking about the next product I want to build, or still poking at the last one to see what else breaks.`,
-  avatarUrl: "/uneeb.png",
+  avatarUrl: "/me.jpeg",
   skills: [
     { name: "React", icon: ReactIcon },
     { name: "Next.js", icon: NextJSIcon },
