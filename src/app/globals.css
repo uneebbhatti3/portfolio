@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* Theme tokens (also read by Scene3D via --acc). Dark follows the OS setting. */
+:root {
+  --bg: #f6f5f2;
+  --fg: #111110;
+  --mut: #6d6d67;
+  --line: rgba(0, 0, 0, 0.1);
+  --acc: #3552f5;
+  --chip: rgba(0, 0, 0, 0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0b;
+    --fg: #ededea;
+    --mut: #8b8b85;
+    --line: rgba(255, 255, 255, 0.1);
+    --acc: #8aa2ff;
+    --chip: rgba(255, 255, 255, 0.05);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-mut: var(--mut);
+  --color-line: var(--line);
+  --color-acc: var(--acc);
+  --color-chip: var(--chip);
+  --font-sans:
+    var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, Menlo, monospace;
+  --ease-emil: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
