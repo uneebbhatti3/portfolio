@@ -150,7 +150,7 @@ export const skillGroups: SkillGroup[] = [
       { label: "PostgreSQL", icon: "postgresql" },
       { label: "MongoDB", icon: "mongodb" },
       { label: "Docker", icon: "docker" },
-      { label: "NestJS (learning)", icon: "nestjs" },
+      { label: "NestJS", icon: "nestjs" },
     ],
   },
   {
