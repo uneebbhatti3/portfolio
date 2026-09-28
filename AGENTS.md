@@ -135,16 +135,16 @@ If a hook changes, update `Motion.tsx` in the same change.
 
 ## 6. Reusable UI primitives (`src/components/ui/`)
 
-| Component        | Purpose                                                                       |
-| ---------------- | ----------------------------------------------------------------------------- |
-| `Container`      | centered page wrapper                                                         |
-| `Section`        | vertical spacing presets                                                      |
-| `TwoColumn`      | title column + content column, stacks on mobile                               |
-| `SectionHeading` | section heading, including reveal hook where appropriate                      |
-| `Button`         | pill link built on `<Link>`, primary/secondary variants, magnetic hook        |
-| `Tag`            | compact mono project technology tag                                           |
-| `Chip`           | larger skill pill with optional icon                                          |
-| `Badge`          | bordered status pill, optionally with a status dot                            |
+| Component        | Purpose                                                                |
+| ---------------- | ---------------------------------------------------------------------- |
+| `Container`      | centered page wrapper                                                  |
+| `Section`        | vertical spacing presets                                               |
+| `TwoColumn`      | title column + content column, stacks on mobile                        |
+| `SectionHeading` | section heading, including reveal hook where appropriate               |
+| `Button`         | pill link built on `<Link>`, primary/secondary variants, magnetic hook |
+| `Tag`            | compact mono project technology tag                                    |
+| `Chip`           | larger skill pill with optional icon                                   |
+| `Badge`          | bordered status pill, optionally with a status dot                     |
 
 When creating or changing a primitive:
 

@@ -1,8 +1,8 @@
-"use client";
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+'use client';
+import { useEffect, useRef } from 'react';
+import * as THREE from 'three';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /** Fixed full-screen wireframe scene: reacts to the pointer and to scroll progress. */
 export default function Scene3D() {
@@ -12,7 +12,7 @@ export default function Scene3D() {
     const cv = ref.current;
     if (!cv) return;
     gsap.registerPlugin(ScrollTrigger);
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const S = { s: 0, mx: 0, my: 0 };
 
     const renderer = new THREE.WebGLRenderer({
@@ -58,21 +58,21 @@ export default function Scene3D() {
       p[i * 3 + 2] = rad * q * Math.sin(t);
     }
     const pg = new THREE.BufferGeometry();
-    pg.setAttribute("position", new THREE.BufferAttribute(p, 3));
+    pg.setAttribute('position', new THREE.BufferAttribute(p, 3));
     const pts = new THREE.Points(pg, m3);
     group.add(outer, inner, pts);
 
     const applyColors = () => {
       const c =
         getComputedStyle(document.documentElement)
-          .getPropertyValue("--acc")
-          .trim() || "#3552f5";
+          .getPropertyValue('--acc')
+          .trim() || '#3552f5';
       [m1, m2, m3].forEach((m) => m.color.set(c));
     };
     applyColors();
-    const mq = matchMedia("(prefers-color-scheme: dark)");
+    const mq = matchMedia('(prefers-color-scheme: dark)');
     const onScheme = () => setTimeout(applyColors, 30);
-    mq.addEventListener("change", onScheme);
+    mq.addEventListener('change', onScheme);
 
     let bx = 0,
       by = 0.2;
@@ -90,7 +90,7 @@ export default function Scene3D() {
       m2.opacity = wide ? 0.55 : 0.35;
     };
     size();
-    addEventListener("resize", size);
+    addEventListener('resize', size);
 
     let cx = 0,
       cy = 0,
@@ -112,32 +112,32 @@ export default function Scene3D() {
     };
     raf = requestAnimationFrame(frame);
     const onScroll = () => requestAnimationFrame(frame);
-    if (reduce) addEventListener("scroll", onScroll, { passive: true });
+    if (reduce) addEventListener('scroll', onScroll, { passive: true });
 
     const onMove = (e: PointerEvent) => {
       S.mx = (e.clientX / innerWidth) * 2 - 1;
       S.my = (e.clientY / innerHeight) * 2 - 1;
     };
-    if (!reduce && matchMedia("(hover:hover)").matches)
-      addEventListener("pointermove", onMove);
+    if (!reduce && matchMedia('(hover:hover)').matches)
+      addEventListener('pointermove', onMove);
 
     const tween = gsap.to(S, {
       s: 1,
-      ease: "none",
+      ease: 'none',
       scrollTrigger: {
         trigger: document.body,
-        start: "top top",
-        end: "bottom bottom",
+        start: 'top top',
+        end: 'bottom bottom',
         scrub: 0.8,
       },
     });
 
     return () => {
       cancelAnimationFrame(raf);
-      removeEventListener("resize", size);
-      removeEventListener("scroll", onScroll);
-      removeEventListener("pointermove", onMove);
-      mq.removeEventListener("change", onScheme);
+      removeEventListener('resize', size);
+      removeEventListener('scroll', onScroll);
+      removeEventListener('pointermove', onMove);
+      mq.removeEventListener('change', onScheme);
       tween.scrollTrigger?.kill();
       tween.kill();
       [g1, g2, pg, m1, m2, m3].forEach((o) => o.dispose());

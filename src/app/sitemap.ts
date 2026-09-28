@@ -1,11 +1,11 @@
-import type { MetadataRoute } from "next";
+import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://uneebbhatti.vercel.app/",
+      url: 'https://uneebbhatti.vercel.app/',
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1,
     },
   ];

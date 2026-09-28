@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Theme tokens (also read by Scene3D via --acc). Dark follows the OS setting. */
 :root {
@@ -28,7 +28,7 @@
   --color-acc: var(--acc);
   --color-chip: var(--chip);
   --font-sans:
-    var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+    var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, Menlo, monospace;
   --ease-emil: cubic-bezier(0.23, 1, 0.32, 1);
 }

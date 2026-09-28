@@ -1,6 +1,6 @@
-import Image from "next/image";
-import type { ReactNode } from "react";
-import { cn } from "@/lib/cn";
+import Image from 'next/image';
+import type { ReactNode } from 'react';
+import { cn } from '@/lib/cn';
 
 interface ChipProps {
   children: ReactNode;
@@ -17,7 +17,7 @@ export default function Chip({ children, icon, mono }: ChipProps) {
           alt=""
           width={16}
           height={16}
-          className={cn("size-4 flex-none", mono && "dark:invert")}
+          className={cn('size-4 flex-none', mono && 'dark:invert')}
         />
       )}
       {children}
