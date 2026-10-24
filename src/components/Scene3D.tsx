@@ -149,7 +149,7 @@ export default function Scene3D() {
     <canvas
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 size-full opacity-60"
+      className="pointer-events-none fixed inset-0 z-0 size-full opacity-35"
     />
   );
 }

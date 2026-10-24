@@ -1,14 +1,14 @@
 @keyframes portfolio-marquee-scroll {
   from {
-    transform: translate3d(0, 0, 0) skewX(-15deg);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(-50%, 0, 0) skewX(-15deg);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .portfolio-marquee-track {
-  animation: portfolio-marquee-scroll 16s linear infinite;
+  animation: portfolio-marquee-scroll 40s linear infinite;
 }
 
 @media (hover: hover) {
@@ -20,6 +20,5 @@
 @media (prefers-reduced-motion: reduce) {
   .portfolio-marquee-track {
     animation: none;
-    transform: skewX(-15deg);
   }
 }

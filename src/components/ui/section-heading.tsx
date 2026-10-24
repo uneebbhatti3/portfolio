@@ -3,29 +3,40 @@ import { cn } from '@/lib/cn';
 
 interface SectionHeadingProps {
   children: ReactNode;
-  size?: 'md' | 'xl';
-  flush?: boolean;
+  eyebrow: string;
+  id?: string;
+  aside?: ReactNode;
+  className?: string;
 }
-
-const sizes = {
-  md: 'text-[clamp(26px,4vw,40px)] tracking-[-.03em]',
-  xl: 'text-[clamp(40px,8vw,96px)] leading-none tracking-[-.045em]',
-} as const;
 
 export default function SectionHeading({
   children,
-  size = 'md',
-  flush,
+  eyebrow,
+  id,
+  aside,
+  className,
 }: SectionHeadingProps) {
   return (
-    <h2
+    <div
       className={cn(
-        'rv font-semibold',
-        sizes[size],
-        flush ? 'mb-0' : size === 'xl' ? 'mb-7.5' : 'mb-10',
+        'rv mb-10 flex flex-wrap items-end justify-between gap-6',
+        className,
       )}
     >
-      {children}
-    </h2>
+      <div>
+        <p className="mb-3 font-mono text-xs tracking-[.14em] text-acc uppercase">
+          {eyebrow}
+        </p>
+        <h2
+          id={id}
+          className="text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.02] font-semibold tracking-[-.045em]"
+        >
+          {children}
+        </h2>
+      </div>
+      {aside && (
+        <div className="max-w-sm text-[15px] leading-7 text-mut">{aside}</div>
+      )}
+    </div>
   );
 }

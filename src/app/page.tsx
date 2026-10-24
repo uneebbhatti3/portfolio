@@ -1,416 +1,253 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowUpRight, Mail, MapPin, MessageCircle } from 'lucide-react';
 import Motion from '@/components/Motion';
 import Scene3D from '@/components/Scene3D';
+import Badge from '@/components/ui/badge';
+import Button from '@/components/ui/button';
+import Card from '@/components/ui/card';
+import Chip from '@/components/ui/chip';
+import Container from '@/components/ui/container';
+import SectionHeading from '@/components/ui/section-heading';
+import Tag from '@/components/ui/tag';
+import { cn } from '@/lib/cn';
 import {
   contact,
+  education,
   experience,
+  navLinks,
   projects,
   skillGroups,
   socialLinks,
 } from '@/lib/data';
 
-// The existing Motion component depends on .hero, #h1, .w, .rv, and .mag.
-// All visual project previews below are editorial illustrations, not product screenshots.
+// Motion.tsx depends on .hero, #h1, .w, .rv and .mag.
 export default function Home() {
-  const featured = projects[0];
-  const others = projects.slice(1);
-  const workExperience = experience.filter((entry) => entry.role !== 'BSIT');
-  const education = experience.find((entry) => entry.role === 'BSIT');
+  const marqueeSkills = skillGroups.flatMap((group) => group.items);
 
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#090909] text-[#efefed] selection:bg-white selection:text-black">
+    <div className="relative min-h-screen overflow-x-clip selection:bg-acc selection:text-bg">
       <Scene3D />
       <Motion />
 
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#090909]/85 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-375 items-center justify-between gap-5 px-5 py-4 sm:px-9 lg:px-14">
+      <header className="fixed inset-x-0 top-[calc(env(safe-area-inset-top,0px)+12px)] z-50 flex justify-center px-4">
+        <nav className="flex w-full max-w-2xl items-center justify-between gap-4 rounded-full border border-line bg-card py-2 pr-2 pl-5 shadow-[0_8px_30px_rgba(0,0,0,.08)] backdrop-blur-xl">
           <Link
             href="#top"
             className="font-mono text-sm font-semibold tracking-[-.04em]"
             aria-label="Uneeb Bhatti, back to top"
           >
-            uneeb<span className="text-neutral-500">.</span>bhatti
+            uneeb<span className="text-acc">.</span>bhatti
           </Link>
-          <div className="flex items-center gap-5 text-xs font-medium text-neutral-400 sm:gap-9">
-            <Link
-              href="#work"
-              className="hidden sm:inline transition-colors hover:text-white"
-            >
-              Work
-            </Link>
-            <Link
-              href="#about"
-              className="hidden sm:inline transition-colors hover:text-white"
-            >
-              About
-            </Link>
-            <Link
-              href="#skills"
-              className="hidden sm:inline transition-colors hover:text-white"
-            >
-              Toolkit
-            </Link>
-            <Link
+          <div className="flex items-center gap-1">
+            {navLinks.slice(0, 3).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hidden rounded-full px-3.5 py-2 text-sm text-mut transition-colors duration-200 hover:bg-chip hover:text-fg sm:inline"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Button
               href="#contact"
-              className="mag border border-white/30 px-4 py-2.5 text-white transition-colors hover:bg-white hover:text-black"
+              variant="primary"
+              className="ml-1 px-4 py-2"
             >
-              Let&apos;s talk ↗
-            </Link>
+              Let&apos;s talk
+            </Button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       <main id="top" className="relative z-10">
-        {/* HERO: large typography + offset editorial information panel + existing canvas */}
         <section
-          className="hero relative flex min-h-svh flex-col justify-between overflow-hidden pt-32 pb-8 sm:pt-40 sm:pb-11"
+          className="hero flex min-h-svh flex-col justify-center pt-32 pb-16 sm:pt-40"
           aria-labelledby="h1"
         >
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,#090909_0%,rgba(9,9,9,.82)_43%,rgba(9,9,9,.24)_100%)]"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 opacity-[.13] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-size-[96px_96px] mask-[linear-gradient(to_bottom,black,transparent_92%)]"
-          />
-          <div className="mx-auto w-full max-w-375 px-5 sm:px-9 lg:px-14">
-            <div className="rv mb-12 flex flex-wrap items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[.19em] text-neutral-400 sm:mb-16">
-              <span className="inline-flex items-center gap-3">
-                <span className="size-1.5 rounded-full bg-white shadow-[0_0_12px_white]" />{' '}
-                Independent developer / Lahore, PK
+          <Container className="flex flex-col items-center text-center">
+            <div className="rv mb-8 flex items-center gap-3">
+              <Image
+                src="/me.jpeg"
+                alt=""
+                width={40}
+                height={40}
+                className="size-10 rounded-full border border-line object-cover"
+              />
+              <Badge>Based in Lahore, Pakistan</Badge>
+            </div>
+            <p className="rv mb-3 text-lg text-mut sm:text-xl">Hey, I&apos;m</p>
+            <h1
+              id="h1"
+              className="text-[clamp(3.5rem,13vw,9.5rem)] leading-[.9] font-semibold tracking-[-.065em]"
+            >
+              <span className="w inline-block overflow-hidden pb-[.08em]">
+                <span className="inline-block">Uneeb</span>
+              </span>{' '}
+              <span className="w inline-block overflow-hidden pb-[.08em]">
+                <span className="inline-block">
+                  Bhatti<span className="text-acc">.</span>
+                </span>
               </span>
-              <span className="hidden sm:inline">Portfolio — 2026</span>
+            </h1>
+            <p className="rv mt-6 text-[clamp(1.35rem,3vw,2rem)] leading-tight font-medium tracking-[-.035em]">
+              Interfaces you can use.{' '}
+              <span className="text-mut">Systems you can rely on.</span>
+            </p>
+            <p className="rv mt-5 max-w-xl text-[15px] leading-7 text-mut sm:text-base">
+              I build web products end to end with Next.js, TypeScript and
+              Node.js. Currently learning more about backend engineering and AI
+              integrations.
+            </p>
+            <div className="rv mt-9 flex flex-wrap justify-center gap-3">
+              <Button href="#work" variant="primary">
+                See my work{' '}
+                <ArrowUpRight aria-hidden="true" className="size-4" />
+              </Button>
+              <Button href={`mailto:${contact.email}`}>
+                <Mail aria-hidden="true" className="size-4" /> Email me
+              </Button>
             </div>
-            <div className="relative">
-              <p className="rv mb-4 max-w-md text-lg leading-snug text-neutral-300 sm:mb-6 sm:text-2xl">
-                Hey, I&apos;m
-              </p>
-              <h1
-                id="h1"
-                className="relative max-w-300 text-[clamp(5.5rem,16vw,15rem)] leading-[.76] font-semibold tracking-[-.105em] text-white"
-              >
-                <span className="w block overflow-hidden pb-[.15em]">
-                  <span className="block">Uneeb</span>
-                </span>
-                <span className="w block overflow-hidden pb-[.15em]">
-                  <span className="block">
-                    Bhatti<span className="text-neutral-600">.</span>
-                  </span>
-                </span>
-              </h1>
-              <div className="rv mt-3 flex max-w-220 flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[.14em] text-neutral-400 sm:mt-7">
-                <span className="border border-white/25 px-3 py-2">
-                  Full-stack developer
-                </span>
-                <span className="border border-white/25 px-3 py-2">
-                  Product-minded
-                </span>
-                <span className="border border-white/25 px-3 py-2">
-                  Backend curious
-                </span>
-              </div>
+            <div className="rv mt-10 flex flex-wrap justify-center gap-2 font-mono text-[11px] tracking-widest text-mut uppercase">
+              <span>Full-stack developer</span>
+              <span aria-hidden="true">·</span>
+              <span>Product-minded</span>
+              <span aria-hidden="true">·</span>
+              <span>Backend curious</span>
             </div>
-            <div className="rv mt-14 grid gap-8 border-t border-white/20 pt-7 sm:mt-20 md:grid-cols-[1fr_1fr] md:gap-20">
-              <p className="max-w-150 text-[clamp(1.55rem,3.5vw,3rem)] leading-[1.12] font-medium tracking-[-.055em]">
-                Interfaces you can use.
-                <br />
-                <span className="text-neutral-500">
-                  Systems you can rely on.
-                </span>
-              </p>
-              <div className="max-w-md md:justify-self-end">
-                <p className="mb-6 text-[15px] leading-7 text-neutral-400">
-                  I build web products end to end with Next.js, TypeScript and
-                  Node.js. Currently building CodDock and learning more about
-                  backend engineering and AI integrations.
-                </p>
-                <Link
-                  href="#work"
-                  className="mag inline-flex items-center gap-5 border-b border-white/60 pb-2.5 text-sm font-semibold transition-[gap] hover:gap-8"
-                >
-                  Explore my work <span aria-hidden="true">↘</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="rv mx-auto mt-20 flex w-full max-w-375 justify-between gap-6 px-5 font-mono text-[10px] uppercase tracking-[.16em] text-neutral-500 sm:px-9 lg:px-14">
-            <span>001 / About what I build</span>
-            <Link href="#work" className="transition-colors hover:text-white">
-              Scroll down ↓
-            </Link>
-          </div>
+          </Container>
         </section>
 
-        {/* INFINITE MARQUEE: uses the existing marquee.css */}
         <section
-          className="relative overflow-hidden border-y border-white/15 bg-[#deded9] py-4 text-[#0d0d0d] sm:py-6"
-          aria-label="Design, develop and deploy"
+          className="relative overflow-hidden border-y border-line bg-card py-5 mask-[linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]"
+          aria-label="Technologies I work with"
         >
           <div
-            className="portfolio-marquee-track flex w-max items-center"
+            className="portfolio-marquee-track flex w-max"
             aria-hidden="true"
           >
             {[0, 1].map((copy) => (
               <div
                 key={copy}
-                className="flex shrink-0 items-center gap-7 pr-7 sm:gap-12 sm:pr-12"
+                className="flex shrink-0 items-center gap-10 pr-10"
               >
-                {(['DESIGN', 'DEVELOP', 'DEPLOY'] as const).map((word) => (
-                  <div
-                    key={word}
-                    className="flex shrink-0 items-center gap-7 sm:gap-12"
+                {marqueeSkills.map((skill) => (
+                  <span
+                    key={skill.label}
+                    className="flex shrink-0 items-center gap-2.5 text-sm text-mut"
                   >
-                    <span className="whitespace-nowrap text-[clamp(2.2rem,5.4vw,5.5rem)] leading-none font-semibold tracking-[-.085em]">
-                      {word}
-                    </span>
-                    <span
-                      className="font-mono text-3xl font-normal sm:text-5xl"
-                      aria-hidden="true"
-                    >
-                      ✳
-                    </span>
-                  </div>
+                    <Image
+                      src={`/icons/${skill.icon}.svg`}
+                      alt=""
+                      width={20}
+                      height={20}
+                      className={cn('size-5', skill.mono && 'dark:invert')}
+                    />
+                    {skill.label}
+                  </span>
                 ))}
               </div>
             ))}
           </div>
         </section>
 
-        {/* FEATURED PROJECT: visually distinctive product concept, not a screenshot */}
-        <section
-          id="work"
-          className="scroll-mt-24 border-b border-white/15 py-24 sm:py-32"
-        >
-          <div className="mx-auto max-w-375 px-5 sm:px-9 lg:px-14">
-            <div className="rv mb-11 flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-[.16em] text-neutral-500">
-              <span>01 / Selected work</span>
-              <span>Selected builds &amp; contributions</span>
-            </div>
-            <div className="rv mb-12 grid items-end gap-8 lg:grid-cols-[1fr_.55fr] lg:gap-20">
-              <h2 className="text-[clamp(3.8rem,10vw,10rem)] leading-[.86] font-semibold tracking-[-.09em]">
-                Not just
-                <br />
-                <span className="text-neutral-500">a concept.</span>
-              </h2>
-              <p className="max-w-md pb-1 text-base leading-7 text-neutral-400">
-                A mix of independent products, client work and engineering
-                contributions. Every project came with a different problem to
-                solve.
-              </p>
-            </div>
-            {featured && (
-              <Link
-                href={featured.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rv group block overflow-hidden border border-white/20 bg-[#141414] transition-colors hover:border-white/50"
-              >
-                <div className="grid lg:grid-cols-[.78fr_1.22fr]">
-                  <div className="flex flex-col justify-between border-b border-white/15 p-7 sm:p-11 lg:border-r lg:border-b-0 lg:p-14">
-                    <div>
-                      <div className="mb-16 flex items-center justify-between font-mono text-[10px] uppercase tracking-[.17em] text-neutral-500">
-                        <span>Featured / 001</span>
-                        <span>{featured.year}</span>
-                      </div>
-                      <div className="mb-6 font-mono text-[11px] uppercase tracking-[.13em] text-neutral-400">
-                        Developer platform · Independent project
-                      </div>
-                      <h3 className="mb-7 text-[clamp(3.7rem,7.5vw,8rem)] leading-[.83] font-semibold tracking-[-.095em]">
-                        Cod<span className="text-neutral-500">Dock</span>
-                        <span className="text-white">.</span>
-                      </h3>
-                      <p className="max-w-md text-[15px] leading-7 text-neutral-400">
-                        {featured.desc}
-                      </p>
-                    </div>
-                    <div className="mt-16">
-                      <div className="mb-8 flex flex-wrap gap-2">
-                        {featured.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="border border-white/15 px-3 py-2 font-mono text-[10px] text-neutral-400"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <span className="inline-flex items-center gap-6 border-b border-white/60 pb-2.5 text-sm font-medium transition-[gap] group-hover:gap-10">
-                        Explore CodDock <span aria-hidden="true">↗</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div className="relative flex min-h-117.5 items-center justify-center overflow-hidden bg-[#d5d5d0] p-5 text-black sm:min-h-145 sm:p-10">
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 opacity-[.23] bg-[linear-gradient(to_right,#777_1px,transparent_1px),linear-gradient(to_bottom,#777_1px,transparent_1px)] bg-size-[40px_40px]"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute top-6 left-7 font-mono text-[10px] tracking-widest text-neutral-600"
-                    >
-                      FIG 01 — PRODUCT CONCEPT
-                    </div>
-                    <div className="relative w-full max-w-165 -rotate-3 border border-[#444] bg-[#0c0c0c] text-white shadow-[18px_28px_0_rgba(0,0,0,.12),0_30px_90px_rgba(0,0,0,.3)] transition-transform duration-500 group-hover:rotate-0">
-                      <div className="flex items-center justify-between border-b border-white/20 px-5 py-4 font-mono text-[10px] text-neutral-400 sm:px-7">
-                        <span className="font-semibold text-white">
-                          coddock<span className="text-neutral-500">/</span>
-                        </span>
-                        <span>LEARN · BUILD · PREPARE</span>
-                      </div>
-                      <div className="grid gap-6 px-5 py-10 sm:grid-cols-[1.15fr_.85fr] sm:px-8 sm:py-16">
-                        <div>
-                          <div className="mb-5 font-mono text-[10px] uppercase tracking-widest text-neutral-400">
-                            Your next step starts here
-                          </div>
-                          <div className="text-[clamp(2.1rem,4vw,4.3rem)] leading-[.95] font-semibold tracking-[-.075em]">
-                            A place to
-                            <br />
-                            keep{' '}
-                            <span className="text-neutral-500">building.</span>
-                          </div>
-                          <div className="mt-7 inline-block border border-white/50 px-4 py-2 font-mono text-[10px]">
-                            EXPLORE ROADMAPS ↗
-                          </div>
-                        </div>
-                        <div className="grid gap-2 self-end">
-                          {['01 / LEARN', '02 / BUILD', '03 / PREPARE'].map(
-                            (step) => (
-                              <div
-                                key={step}
-                                className="flex items-center justify-between border border-white/20 bg-white/6 p-4 text-[11px]"
-                              >
-                                <span>{step}</span>
-                                <span className="text-neutral-500">↗</span>
-                              </div>
-                            ),
-                          )}
-                        </div>
-                      </div>
-                      <div className="flex justify-between border-t border-white/20 px-5 py-3 font-mono text-[9px] text-neutral-500 sm:px-7">
-                        <span>DEVELOPER GROWTH</span>
-                        <span>CONCEPTUAL PREVIEW</span>
-                      </div>
-                    </div>
-                    <div className="absolute right-7 bottom-6 font-mono text-[10px] tracking-widest text-neutral-600">
-                      NOT AN APP SCREENSHOT
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            )}
+        <section id="work" className="scroll-mt-24 py-24 sm:py-32">
+          <Container>
+            <SectionHeading
+              eyebrow="Selected work"
+              aside="A mix of independent products, client work and engineering contributions. Every project came with a different problem to solve."
+            >
+              Not just
+              <br />
+              <span className="text-mut">a concept.</span>
+            </SectionHeading>
 
-            <div className="mt-5 grid gap-5 md:grid-cols-2">
-              {others.map((project, index) => (
+            <div className="grid gap-4 md:grid-cols-2">
+              {projects.map((project) => (
                 <Link
                   key={project.title}
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rv group flex min-h-106.25 flex-col overflow-hidden border border-white/15 bg-[#131313] transition-colors hover:border-white/50"
+                  className="rv group flex flex-col overflow-hidden rounded-3xl border border-line bg-card p-3 transition-[border-color] duration-200 hover:border-mut"
                 >
-                  <div
-                    className={`relative flex min-h-46.25 items-center justify-center overflow-hidden border-b border-white/15 px-7 py-10 ${index % 2 === 0 ? 'bg-[#222]' : 'bg-[#c9c9c4] text-[#151515]'}`}
-                  >
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 opacity-[.11] bg-[linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] bg-size-[38px_38px]"
-                    />
-                    <div className="relative flex w-full max-w-122.5 items-center justify-between gap-4 border border-current/30 bg-black/10 p-5 sm:p-7">
-                      <div>
-                        <p className="mb-3 font-mono text-[10px] uppercase tracking-widest opacity-55">
-                          PROJECT / {String(index + 2).padStart(3, '0')}
-                        </p>
-                        <div className="text-[clamp(2rem,5vw,4rem)] leading-none font-semibold tracking-[-.075em]">
-                          {project.title}
-                        </div>
-                      </div>
-                      <span className="text-4xl font-light opacity-60 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
-                        ↗
-                      </span>
+                  {project.image && (
+                    <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-chip">
+                      <Image
+                        src={project.image}
+                        alt={`Preview of ${project.title}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 560px"
+                        className={cn(
+                          'transition-transform duration-300 ease-emil group-hover:scale-[1.03]',
+                          project.cutout
+                            ? 'object-contain p-6'
+                            : 'object-cover object-left-top',
+                        )}
+                      />
                     </div>
-                    <div
-                      aria-hidden="true"
-                      className="absolute right-4 bottom-3 font-mono text-[9px] uppercase tracking-wider opacity-50"
-                    >
-                      Project title study
-                    </div>
-                  </div>
-                  <div className="flex flex-1 flex-col justify-between p-7 sm:p-9">
+                  )}
+                  <div className="flex flex-1 flex-col gap-5 p-4 sm:p-5">
                     <div>
-                      <div className="mb-4 flex justify-between font-mono text-[10px] uppercase tracking-widest text-neutral-500">
-                        <span>0{index + 2} / Project</span>
-                        <span>{project.year}</span>
+                      <div className="mb-2 flex items-center justify-between gap-4">
+                        <h3 className="text-2xl font-semibold tracking-[-.04em]">
+                          {project.title}
+                        </h3>
+                        <span className="flex items-center gap-2 font-mono text-xs text-mut">
+                          {project.year}
+                          <ArrowUpRight
+                            aria-hidden="true"
+                            className="size-4 transition-[transform,color] duration-200 ease-emil group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-fg"
+                          />
+                        </span>
                       </div>
-                      <p className="max-w-xl text-[15px] leading-7 text-neutral-300">
+                      <p className="text-[15px] leading-7 text-mut">
                         {project.desc}
                       </p>
                     </div>
-                    <div className="mt-8 flex flex-wrap gap-2">
+                    <div className="mt-auto flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="border border-white/15 px-2.5 py-1.5 font-mono text-[10px] text-neutral-400"
-                        >
-                          {tag}
-                        </span>
+                        <Tag key={tag}>{tag}</Tag>
                       ))}
                     </div>
                   </div>
                 </Link>
               ))}
             </div>
-          </div>
+          </Container>
         </section>
 
-        {/* ABOUT: striking pale strip + dark editorial content */}
         <section
           id="about"
-          className="scroll-mt-24 border-b border-white/15"
+          className="scroll-mt-24 py-24 sm:py-32"
           aria-labelledby="about-title"
         >
-          <div className="grid lg:grid-cols-[.62fr_1fr]">
-            <div className="group relative flex min-h-85 flex-col justify-between overflow-hidden bg-[#171717] p-7 text-white sm:p-12 lg:min-h-165 lg:p-16">
-              {/* Background image */}
-              <Image
-                src="/me.jpeg"
-                alt="Portrait of Uneeb Bhatti"
-                fill
-                priority={false}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center grayscale transition-transform duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0 hover:transition-all"
-              />
+          <Container>
+            <SectionHeading eyebrow="A little about me" id="about-title">
+              Curiosity
+              <br />
+              meets <span className="text-mut">code.</span>
+            </SectionHeading>
 
-              {/* Dark gradient for text readability */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/45 via-transparent to-black/75"
-              />
+            <div className="grid gap-4 lg:grid-cols-3">
+              <Card className="group min-h-105 p-0 sm:p-0 lg:row-span-2">
+                <Image
+                  src="/me.jpeg"
+                  alt="Portrait of Uneeb Bhatti"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 380px"
+                  className="object-cover grayscale transition-[filter] duration-300 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-transparent" />
+                <p className="absolute inset-x-0 bottom-0 p-6 text-[15px] leading-6 text-white sm:p-8">
+                  I like understanding the whole problem, not just the part
+                  visible on screen.
+                </p>
+              </Card>
 
-              {/* Section label */}
-              <span className="rv relative z-10 font-mono text-[11px] uppercase tracking-[.2em]">
-                02 / A little about me
-              </span>
-
-              {/* Description */}
-              <p className="rv relative z-10 max-w-xs text-sm leading-6 text-white/90">
-                I like understanding the whole problem, not just the part
-                visible on screen.
-              </p>
-            </div>
-            <div className="flex flex-col justify-between p-7 sm:p-12 lg:p-16 xl:p-24">
-              <div className="rv">
-                <h2
-                  id="about-title"
-                  className="mb-10 text-[clamp(3.2rem,7vw,7.5rem)] leading-[.9] font-semibold tracking-[-.08em]"
-                >
-                  Curiosity
-                  <br />
-                  meets <span className="text-neutral-500">code.</span>
-                </h2>
-                <div className="max-w-2xl space-y-6 text-[15px] leading-8 text-neutral-400">
-                  <p>
+              <Card className="lg:col-span-2">
+                <div className="max-w-2xl space-y-5 text-[15px] leading-7 text-mut sm:text-base sm:leading-8">
+                  <p className="text-fg">
                     Once an idea gets stuck in my head, I usually end up
                     building it. Some stay weekend experiments; a few turn into
                     real products.
@@ -421,217 +258,221 @@ export default function Home() {
                     experience, building the backend, and learning what it takes
                     to make software work beyond the happy path.
                   </p>
-                  <p>
-                    As Web Development Lead at UMT ACM, I run workshops for
-                    students who want to move beyond tutorials. I&apos;ve also
-                    helped organize TechVerse, a 12-hour hackathon, and competed
-                    at Softcom &apos;25.
+                </div>
+              </Card>
+
+              <Card className="flex flex-col justify-between gap-8">
+                <div className="flex items-center gap-2">
+                  <Image
+                    src="/acm.jpg"
+                    alt=""
+                    width={36}
+                    height={36}
+                    className="size-9 rounded-full border border-line object-cover"
+                  />
+                  <Image
+                    src="/techverse.jpg"
+                    alt=""
+                    width={36}
+                    height={36}
+                    className="size-9 rounded-full border border-line object-cover"
+                  />
+                </div>
+                <p className="text-[15px] leading-7 text-mut">
+                  As{' '}
+                  <span className="text-fg">
+                    Web Development Lead at UMT ACM
+                  </span>
+                  , I run workshops for students who want to move beyond
+                  tutorials. I&apos;ve also helped organize TechVerse, a 12-hour
+                  hackathon, and competed at Softcom &apos;25.
+                </p>
+              </Card>
+
+              <Card className="flex flex-col justify-between gap-8">
+                <MapPin aria-hidden="true" className="size-6 text-acc" />
+                <div>
+                  <p className="font-mono text-[11px] tracking-widest text-mut uppercase">
+                    Based in
+                  </p>
+                  <p className="mt-1 text-xl font-medium tracking-[-.03em]">
+                    Lahore, Pakistan
                   </p>
                 </div>
-              </div>
-              <div className="rv mt-14 grid grid-cols-2 gap-4 border-t border-white/20 pt-7 font-mono text-[10px] uppercase tracking-widest text-neutral-500">
-                <span>
-                  Based in
-                  <br />
-                  <strong className="mt-2 block font-normal text-sm normal-case tracking-normal text-white">
-                    Lahore, Pakistan
-                  </strong>
-                </span>
-                <span>
-                  Currently
-                  <br />
-                  <strong className="mt-2 block font-normal text-sm normal-case tracking-normal text-white">
-                    Building CodDock
-                  </strong>
-                </span>
-              </div>
+              </Card>
             </div>
-          </div>
+          </Container>
         </section>
 
-        {/* JOURNEY: keep employment separate from education */}
-        <section
-          className="border-b border-white/15 py-24 sm:py-32"
-          aria-labelledby="journey-title"
-        >
-          <div className="mx-auto max-w-375 px-5 sm:px-9 lg:px-14">
-            <div className="rv mb-11 font-mono text-[11px] uppercase tracking-[.17em] text-neutral-500">
-              03 / The journey
-            </div>
-            <div className="grid gap-14 lg:grid-cols-[.9fr_1fr] lg:gap-24">
-              <h2
-                id="journey-title"
-                className="rv text-[clamp(3.7rem,8vw,8.5rem)] leading-[.88] font-semibold tracking-[-.085em]"
-              >
-                Work,
-                <br />
-                learn,
-                <br />
-                <span className="text-neutral-500">repeat.</span>
-              </h2>
-              <div className="rv">
-                <div className="border-t border-white/25">
-                  {workExperience.map((entry, index) => (
-                    <div
+        <section className="py-24 sm:py-32" aria-labelledby="journey-title">
+          <Container>
+            <SectionHeading eyebrow="The journey" id="journey-title">
+              Work, learn, <span className="text-mut">repeat.</span>
+            </SectionHeading>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card>
+                <h3 className="mb-6 font-mono text-xs tracking-[.14em] text-mut uppercase">
+                  Experience
+                </h3>
+                <ul className="grid gap-3">
+                  {experience.map((entry) => (
+                    <li
                       key={`${entry.role}-${entry.org}`}
-                      className="grid grid-cols-[34px_1fr] gap-4 border-b border-white/15 py-6 sm:grid-cols-[40px_1fr_auto] sm:gap-7"
+                      className="flex items-center gap-4 rounded-2xl border border-line bg-chip p-4"
                     >
-                      <span className="pt-1 font-mono text-[11px] text-neutral-500">
-                        0{index + 1}
-                      </span>
-                      <div>
-                        <h3 className="mb-1 text-lg font-medium">
-                          {entry.role}
-                        </h3>
-                        <p className="text-sm text-neutral-500">{entry.org}</p>
-                        <span className="mt-2 block font-mono text-[10px] text-neutral-500 sm:hidden">
+                      {entry.logo && (
+                        <Image
+                          src={entry.logo}
+                          alt=""
+                          width={44}
+                          height={44}
+                          className="size-11 shrink-0 rounded-xl border border-line bg-white object-contain p-1"
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium">{entry.role}</p>
+                        <p className="text-sm text-mut">{entry.org}</p>
+                        <p className="mt-1 font-mono text-[11px] text-mut sm:hidden">
                           {entry.when}
-                        </span>
-                      </div>
-                      <span className="hidden pt-1 font-mono text-[11px] text-neutral-500 sm:block">
-                        {entry.when}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                {education && (
-                  <div className="mt-12 border-t border-white/25 pt-5">
-                    <div className="mb-5 font-mono text-[10px] uppercase tracking-[.19em] text-neutral-500">
-                      Education
-                    </div>
-                    <div className="flex flex-wrap justify-between gap-3">
-                      <div>
-                        <h3 className="text-lg font-medium">
-                          Bachelor of Science in Information Technology
-                        </h3>
-                        <p className="mt-1 text-sm text-neutral-500">
-                          {education.org}
                         </p>
                       </div>
-                      <span className="font-mono text-[11px] text-neutral-500">
-                        {education.when}
+                      <span className="hidden shrink-0 font-mono text-[11px] text-mut sm:block">
+                        {entry.when}
                       </span>
-                    </div>
-                  </div>
-                )}
-              </div>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
+              <Card>
+                <h3 className="mb-6 font-mono text-xs tracking-[.14em] text-mut uppercase">
+                  Education
+                </h3>
+                <ul className="grid gap-3">
+                  {education.map((entry) => (
+                    <li
+                      key={entry.degree}
+                      className="flex items-center gap-4 rounded-2xl border border-line bg-chip p-4"
+                    >
+                      {entry.logo && (
+                        <Image
+                          src={entry.logo}
+                          alt=""
+                          width={44}
+                          height={44}
+                          className="size-11 shrink-0 rounded-xl border border-line bg-white object-contain p-1"
+                        />
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium">{entry.degree}</p>
+                        <p className="text-sm text-mut">{entry.institution}</p>
+                        <p className="mt-1 font-mono text-[11px] text-mut sm:hidden">
+                          {entry.year}
+                        </p>
+                      </div>
+                      <span className="hidden shrink-0 font-mono text-[11px] text-mut sm:block">
+                        {entry.year}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
             </div>
-          </div>
+          </Container>
         </section>
 
-        {/* TOOLKIT: all current icon assets and labels, no invented technologies */}
         <section
           id="skills"
-          className="scroll-mt-24 border-b border-white/15 bg-[#111] py-24 sm:py-32"
+          className="scroll-mt-24 py-24 sm:py-32"
           aria-labelledby="skills-title"
         >
-          <div className="mx-auto max-w-375 px-5 sm:px-9 lg:px-14">
-            <div className="rv mb-11 flex justify-between gap-4 font-mono text-[11px] uppercase tracking-[.18em] text-neutral-500">
-              <span>04 / The toolkit</span>
-              <span>Things I work with</span>
-            </div>
-            <div className="rv mb-14 grid gap-8 lg:grid-cols-[1fr_.6fr] lg:items-end">
-              <h2
-                id="skills-title"
-                className="text-[clamp(3.8rem,9vw,9rem)] leading-[.89] font-semibold tracking-[-.085em]"
-              >
-                The right
-                <br />
-                <span className="text-neutral-500">tool matters.</span>
-              </h2>
-              <p className="max-w-md pb-1 text-[15px] leading-7 text-neutral-400 lg:justify-self-end">
-                From interface details to data models and AI integrations. These
-                are tools I use or am actively learning, not a list of
-                everything I&apos;ve heard of.
-              </p>
-            </div>
-            <div className="grid gap-px border border-white/15 bg-white/15 md:grid-cols-2">
+          <Container>
+            <SectionHeading
+              eyebrow="The toolkit"
+              id="skills-title"
+              aside="From interface details to data models and AI integrations. These are tools I use or am actively learning, not a list of everything I've heard of."
+            >
+              The right
+              <br />
+              <span className="text-mut">tool matters.</span>
+            </SectionHeading>
+
+            <div className="grid gap-4 md:grid-cols-2">
               {skillGroups.map((group, index) => (
-                <div
-                  key={group.name}
-                  className="rv group min-h-75 bg-[#141414] p-7 transition-colors hover:bg-[#1d1d1d] sm:p-10"
-                >
-                  <div className="mb-12 flex justify-between font-mono text-[10px] uppercase tracking-[.16em] text-neutral-500">
-                    <span>
-                      0{index + 1} / {group.name}
+                <Card key={group.name}>
+                  <div className="mb-6 flex items-baseline justify-between gap-4">
+                    <h3 className="text-2xl font-semibold tracking-[-.04em]">
+                      {group.name}
+                    </h3>
+                    <span className="font-mono text-xs text-mut">
+                      0{index + 1}
                     </span>
-                    <span>↗</span>
                   </div>
-                  <h3 className="mb-8 text-[clamp(2rem,3vw,3.6rem)] leading-none font-medium tracking-[-.065em]">
-                    {group.name}
-                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {group.items.map((skill) => (
-                      <span
+                      <Chip
                         key={skill.label}
-                        className="inline-flex items-center gap-2.5 border border-white/15 bg-white/2.5 px-3 py-2.5 text-xs text-neutral-300 transition-colors hover:border-white/45 hover:text-white"
+                        icon={skill.icon}
+                        mono={skill.mono}
                       >
-                        <Image
-                          src={`/icons/${skill.icon}.svg`}
-                          alt=""
-                          aria-hidden="true"
-                          width={20}
-                          height={20}
-                          className={`size-5 shrink-0 object-contain ${skill.mono ? 'brightness-0 invert' : ''}`}
-                        />
-                        <span>{skill.label}</span>
-                      </span>
+                        {skill.label}
+                      </Chip>
                     ))}
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
+          </Container>
         </section>
 
-        {/* CONTACT: monumental light surface as a distinct final act */}
         <section
           id="contact"
-          className="scroll-mt-24 bg-[#d5d5cf] text-[#101010]"
+          className="scroll-mt-24 pt-12 pb-24 sm:pb-32"
           aria-labelledby="contact-title"
         >
-          <div className="mx-auto max-w-375 px-5 py-20 sm:px-9 sm:py-28 lg:px-14">
-            <div className="rv mb-16 flex items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-[.17em] text-neutral-600">
-              <span>05 / Next conversation</span>
-              <span>Have a project in mind?</span>
-            </div>
-            <h2
-              id="contact-title"
-              className="rv max-w-300 text-[clamp(4.4rem,13vw,13.2rem)] leading-[.77] font-semibold tracking-[-.105em]"
-            >
-              Let&apos;s make
-              <br />
-              it <span className="text-[#858580]">real.</span>
-              <span className="inline-block text-[.4em] align-top">↗</span>
-            </h2>
-            <div className="rv mt-20 grid gap-10 border-t border-black/25 pt-8 md:grid-cols-2 md:items-end">
-              <p className="max-w-md text-base leading-7 text-neutral-700">
-                Want to talk about a project, a developer role, or engineering
-                work? Email or WhatsApp works best.
-              </p>
-              <div className="flex flex-col items-start gap-5 md:items-end">
-                <Link
-                  href={`mailto:${contact.email}`}
-                  className="mag border-b border-black pb-2 text-[clamp(1.15rem,2.8vw,2.5rem)] font-medium tracking-[-.055em] transition-[gap] hover:text-neutral-600"
+          <Container>
+            <Card className="px-6 py-16 text-center sm:px-12 sm:py-24">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_0%,color-mix(in_oklab,var(--acc)_25%,transparent),transparent)]"
+              />
+              <div className="relative flex flex-col items-center">
+                <p className="mb-4 font-mono text-xs tracking-[.14em] text-acc uppercase">
+                  Have a project in mind?
+                </p>
+                <h2
+                  id="contact-title"
+                  className="text-[clamp(2.75rem,8vw,6rem)] leading-[.95] font-semibold tracking-[-.06em]"
                 >
-                  {contact.email} ↗
-                </Link>
-                <Link
-                  href={contact.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm underline underline-offset-4"
-                >
-                  Or say hello on WhatsApp ↗
-                </Link>
+                  Let&apos;s make it <span className="text-mut">real.</span>
+                </h2>
+                <p className="mt-6 max-w-md text-[15px] leading-7 text-mut sm:text-base">
+                  Want to talk about a project, a developer role, or engineering
+                  work? Email or WhatsApp works best.
+                </p>
+                <div className="mt-9 flex flex-wrap justify-center gap-3">
+                  <Button href={`mailto:${contact.email}`} variant="primary">
+                    <Mail aria-hidden="true" className="size-4" />
+                    {contact.email}
+                  </Button>
+                  <Button
+                    href={contact.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle aria-hidden="true" className="size-4" />
+                    WhatsApp
+                  </Button>
+                </div>
               </div>
-            </div>
-          </div>
+            </Card>
+          </Container>
         </section>
       </main>
 
-      <footer className="relative z-10 border-t border-white/15 bg-[#090909] px-5 py-8 text-neutral-500 sm:px-9 lg:px-14">
-        <div className="mx-auto flex max-w-347.5 flex-wrap items-center justify-between gap-5 font-mono text-[10px] uppercase tracking-[.13em]">
+      <footer className="relative z-10 border-t border-line py-8">
+        <Container className="flex flex-wrap items-center justify-between gap-5 font-mono text-[11px] tracking-[.12em] text-mut uppercase">
           <span>© {new Date().getFullYear()} Uneeb Bhatti</span>
           <div className="flex flex-wrap gap-6">
             {socialLinks.map((social) => (
@@ -640,16 +481,19 @@ export default function Home() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-white"
+                className="transition-colors duration-200 hover:text-fg"
               >
                 {social.label} ↗
               </Link>
             ))}
           </div>
-          <Link href="#top" className="transition-colors hover:text-white">
+          <Link
+            href="#top"
+            className="transition-colors duration-200 hover:text-fg"
+          >
             Back to top ↑
           </Link>
-        </div>
+        </Container>
       </footer>
     </div>
   );

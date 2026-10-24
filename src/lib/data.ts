@@ -9,12 +9,16 @@ export interface Project {
   href: string;
   desc: string;
   tags: string[];
+  image?: string;
+  /** Transparent cut-out image: shown whole instead of cropped to the frame. */
+  cutout?: boolean;
 }
 
 export interface ExperienceEntry {
   role: string;
   org: string;
   when: string;
+  logo?: string;
 }
 
 export interface Skill {
@@ -32,6 +36,7 @@ export interface Education {
   degree: string;
   institution: string;
   year: string;
+  logo?: string;
 }
 
 export const navLinks: NavLink[] = [
@@ -54,27 +59,10 @@ export const contact = {
 
 export const projects: Project[] = [
   {
-    title: 'CodDock',
-    year: '2026 - Present',
-    href: 'https://coddock.vercel.app/',
-    desc: 'Developer growth platform for aspiring engineers in Pakistan, combining learning roadmaps, project challenges, interview preparation and AI-assisted career tools.',
-    tags: [
-      'Next.js',
-      'NestJS',
-      'TypeScript',
-      'Prisma',
-      'PostgreSQL',
-      'Vercel AI SDKs',
-      'Google ADK',
-      'Docker',
-      'CI/CD',
-      'Shadcn UI',
-    ],
-  },
-  {
     title: 'The Buff',
     year: '2026 - Present',
     href: 'https://thebuffdetailing.vercel.app/',
+    image: '/work/the-buff.webp',
     desc: 'Booking and operations system for a detailing studio in Lahore, with duration-based scheduling, owner-managed services, live slot availability and a Google ADK assistant backed by application data.',
     tags: ['Next.js', 'TypeScript', 'Prisma', 'shadcn/ui', 'Google ADK'],
   },
@@ -82,6 +70,7 @@ export const projects: Project[] = [
     title: 'AlmTraders',
     year: '2024',
     href: 'https://www.almtraders.org/',
+    image: '/work/almtraders.webp',
     desc: 'B2B website for an IT hardware wholesaler, focused on clear product positioning, international customers and search-friendly implementation.',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
   },
@@ -89,6 +78,7 @@ export const projects: Project[] = [
     title: 'Sysvelop',
     year: '2024',
     href: 'https://www.sysvelop.com/',
+    image: '/work/sysvelop.webp',
     desc: 'Website for a software house company, designed and built with a lead-capture flow and excellent Lighthouse performance.',
     tags: ['Next.js', 'shadcn/ui', 'HubSpot'],
   },
@@ -96,6 +86,8 @@ export const projects: Project[] = [
     title: 'Token Talent HR',
     year: '2024',
     href: 'https://tokentalent.co/',
+    image: '/work/token-talent.webp',
+    cutout: true,
     desc: 'Worked on the backend of a mobile-first HR platform during my internship, building REST APIs and JWT authentication around attendance and leave workflows.',
     tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
   },
@@ -107,11 +99,13 @@ export const experience: ExperienceEntry[] = [
     role: 'Backend Developer Intern',
     org: 'Token Talent HR',
     when: 'Aug - Sep 2024',
+    logo: '/token.png',
   },
   {
     role: 'Front-end Developer & QA Intern',
     org: 'Concypt',
     when: 'Jul - Oct 2023',
+    logo: '/concypt.jpg',
   },
 ];
 
@@ -120,11 +114,13 @@ export const education: Education[] = [
     degree: 'Bachelor of Science in Information Technology (BSIT)',
     institution: 'University of Management and Technology (UMT)',
     year: '2023 - Present',
+    logo: '/umt.png',
   },
   {
     degree: 'Intermediate',
     institution: 'Punjab Group of Colleges',
     year: '2020 - 2023',
+    logo: '/pgc.png',
   },
 ];
 
@@ -149,7 +145,6 @@ export const skillGroups: SkillGroup[] = [
       { label: 'Express', icon: 'expressjs', mono: true },
       { label: 'PostgreSQL', icon: 'postgresql' },
       { label: 'MongoDB', icon: 'mongodb' },
-      { label: 'Docker', icon: 'docker' },
       { label: 'NestJS', icon: 'nestjs' },
     ],
   },
@@ -165,6 +160,7 @@ export const skillGroups: SkillGroup[] = [
     name: 'Tools & Design',
     items: [
       { label: 'Git', icon: 'git' },
+      { label: 'Docker', icon: 'docker' },
       { label: 'GitHub', icon: 'github', mono: true },
       { label: 'Postman', icon: 'postman' },
       { label: 'Figma', icon: 'figma' },

@@ -10,7 +10,7 @@ interface ChipProps {
 
 export default function Chip({ children, icon, mono }: ChipProps) {
   return (
-    <span className="inline-flex items-center gap-2.25 rounded-full border border-line px-3.5 py-1.75 text-[13px] text-fg transition-[border-color,background-color] duration-150 hover:border-acc hover:bg-chip">
+    <span className="inline-flex items-center gap-2.25 rounded-full border border-line bg-chip px-3.5 py-2 text-[13px] text-fg transition-[border-color] duration-150 hover:border-mut">
       {icon && (
         <Image
           src={`/icons/${icon}.svg`}
