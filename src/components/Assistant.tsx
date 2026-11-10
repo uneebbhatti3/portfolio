@@ -1,6 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type KeyboardEvent,
+  type ReactNode,
+} from "react";
+import Link from "next/link";
 import { ArrowUp, X } from "lucide-react";
 import Bloop from "@/components/Bloop";
 import { deriveMood, useHeldMood, type ChatStatus } from "@/components/bloop-mood";
@@ -12,14 +20,51 @@ interface ChatMessage {
   content: string;
 }
 
-// Placeholder until the agent exists. Expected contract: POST { messages } and
-// respond with a plain-text (optionally streamed) reply.
+// Contract: POST { messages } and receive a plain-text, streamed reply.
 const CHAT_ENDPOINT = "/api/chat";
 
-const NOT_CONNECTED =
-  "The assistant isn't connected yet. You can still reach Uneeb through the contact section.";
+const ERROR_MESSAGES: Record<string, string> = {
+  "429": "Bloop is getting a lot of questions right now. Please try again in a moment.",
+  "503": "Bloop is getting a lot of questions right now. Please try again in a moment.",
+  default:
+    "Something went wrong. Please try again, or reach Uneeb through the contact section.",
+};
 
 const createId = () => Math.random().toString(36).slice(2);
+
+// The agent replies in light Markdown. Only links and bold are rendered, and only
+// http(s)/mailto links are allowed so a reply can never inject a javascript: URL.
+const INLINE_PATTERN =
+  /\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^\s)]+)\)|\*\*([^*]+)\*\*|((?:https?:\/\/)[^\s)]+)/g;
+
+function renderInline(text: string): ReactNode[] {
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  for (const match of text.matchAll(INLINE_PATTERN)) {
+    const [whole, label, href, bold, bareUrl] = match;
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    const key = `${match.index}-${whole.length}`;
+    if (bold) {
+      nodes.push(<strong key={key}>{bold}</strong>);
+    } else {
+      const url = href ?? bareUrl;
+      const external = !url.startsWith("mailto:");
+      nodes.push(
+        <Link
+          key={key}
+          href={url}
+          className="font-medium text-acc underline underline-offset-2"
+          {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+        >
+          {label ?? url}
+        </Link>,
+      );
+    }
+    lastIndex = match.index + whole.length;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
+}
 
 export default function Assistant() {
   const [open, setOpen] = useState(false);
@@ -97,7 +142,8 @@ export default function Assistant() {
     } catch (caught) {
       if (controller.signal.aborted) return;
       setMessages((current) => current.filter((message) => message.id !== replyId || message.content));
-      setError(caught instanceof Error && caught.message === "404" ? NOT_CONNECTED : "Something went wrong. Please try again.");
+      const code = caught instanceof Error ? caught.message : "";
+      setError(ERROR_MESSAGES[code] ?? ERROR_MESSAGES.default);
       setStatus("error");
     }
   };
@@ -160,7 +206,11 @@ export default function Assistant() {
                 message.role === "user" ? "ml-auto bg-fg text-bg" : "bg-chip text-fg",
               )}
             >
-              {message.content || "…"}
+              {!message.content
+                ? "…"
+                : message.role === "assistant"
+                  ? renderInline(message.content)
+                  : message.content}
             </p>
           ))}
           {status === "submitted" && (
@@ -203,6 +253,7 @@ export default function Assistant() {
       <div ref={bloopRef} className="pointer-events-auto size-20 sm:size-28">
         <Bloop
           mood={mood}
+          color="#7597eb"
           label={open ? "Bloop. Press Enter to close the chat." : "Bloop, the portfolio assistant. Press Enter to open the chat."}
           onPoke={() => (open ? close() : setOpen(true))}
         />
