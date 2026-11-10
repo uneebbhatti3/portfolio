@@ -5,6 +5,13 @@ import './marquee.css';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
+import {
+  lastUpdated,
+  siteDescription,
+  siteUrl,
+  skillGroups,
+  socialLinks,
+} from '@/lib/data';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -17,25 +24,27 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 });
 
-const siteUrl = 'https://uneebbhatti.vercel.app/';
+const siteTitle = 'Uneeb Bhatti | Full-Stack Developer, Next.js & AI Agents';
+
+// Date of the first commit in this repository.
+const siteCreated = '2026-08-13';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: 'Uneeb Bhatti | Full-Stack Developer — Next.js, TypeScript & AI',
+    default: siteTitle,
     template: '%s | Uneeb Bhatti',
   },
 
-  description:
-    'Full-stack developer based in Lahore, Pakistan, building production-focused web applications with Next.js, TypeScript, Node.js, PostgreSQL and AI integrations, with an emphasis on backend systems, product engineering and reliable user experiences.',
+  description: siteDescription,
 
   applicationName: 'Uneeb Bhatti',
 
   authors: [
     {
       name: 'Uneeb Bhatti',
-      url: siteUrl,
+      url: `${siteUrl}/`,
     },
   ],
 
@@ -49,27 +58,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: siteUrl,
+    url: `${siteUrl}/`,
     siteName: 'Uneeb Bhatti',
-    title: 'Uneeb Bhatti | Full-Stack Developer',
-    description:
-      'Full-stack developer in Lahore, Pakistan building web products with Next.js, TypeScript, Node.js and AI integrations.',
-    images: [
-      {
-        url: '/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Uneeb Bhatti — Full-Stack Developer',
-      },
-    ],
+    title: siteTitle,
+    description: siteDescription,
   },
 
+  // Images come from the opengraph-image / twitter-image file conventions in
+  // src/app, which take priority over config and carry their own dimensions.
   twitter: {
     card: 'summary_large_image',
-    title: 'Uneeb Bhatti | Full-Stack Developer',
-    description:
-      'Full-stack developer building web products with Next.js, TypeScript, Node.js and AI integrations.',
-    images: ['/opengraph-image.png'],
+    title: siteTitle,
+    description: siteDescription,
+  },
+
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 
   robots: {
@@ -93,32 +97,54 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 };
 
-const personJsonLd = {
+// One connected graph lets search engines and AI crawlers resolve the page,
+// the site and the person as the same entity.
+const personId = `${siteUrl}/#person`;
+const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Uneeb Bhatti',
-  url: siteUrl,
-  jobTitle: 'Full-Stack Developer',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Lahore',
-    addressCountry: 'PK',
-  },
-  alumniOf: {
-    '@type': 'CollegeOrUniversity',
-    name: 'University of Management and Technology',
-  },
-  sameAs: [
-    'https://github.com/uneebbhatti3',
-    'https://www.linkedin.com/in/uneeb-bhatti/',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      name: 'Uneeb Bhatti',
+      url: `${siteUrl}/`,
+      inLanguage: 'en',
+      publisher: { '@id': personId },
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${siteUrl}/#profile`,
+      url: `${siteUrl}/`,
+      name: siteTitle,
+      description: siteDescription,
+      dateCreated: siteCreated,
+      dateModified: lastUpdated,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      mainEntity: { '@id': personId },
+    },
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: 'Uneeb Bhatti',
+      url: `${siteUrl}/`,
+      image: `${siteUrl}/me.jpeg`,
+      jobTitle: 'Full-Stack Developer',
+      description: siteDescription,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Lahore',
+        addressCountry: 'PK',
+      },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'University of Management and Technology',
+      },
+      knowsAbout: skillGroups.flatMap((group) =>
+        group.items.map((item) => item.label),
+      ),
+      sameAs: socialLinks.map((link) => link.href),
+    },
   ],
-};
-
-const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Uneeb Bhatti',
-  url: siteUrl,
 };
 
 export default function RootLayout({
@@ -137,13 +163,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personJsonLd).replace(/</g, '\\u003c'),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteJsonLd).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
           }}
         />
       </head>
@@ -156,7 +176,7 @@ export default function RootLayout({
             {`
               (function(c,l,a,r,i,t,y){
                   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://clarity.ms"+i;
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                   y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "${clarityId}");
             `}

@@ -39,8 +39,34 @@ export interface Education {
   logo?: string;
 }
 
+export interface Talk {
+  title: string;
+  /** Format of the session, e.g. "Live online workshop". */
+  format: string;
+  when: string;
+  duration?: string;
+  audience?: string;
+  desc: string;
+  tags: string[];
+  /** Recording, slides or repository, once you are ready to make it public. */
+  href?: string;
+}
+
+// Trailing slashes are stripped so paths can be appended without producing "//".
+// A custom domain only needs NEXT_PUBLIC_SITE_URL set in Vercel.
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://uneebbhatti.vercel.app'
+).replace(/\/+$/, '');
+
+/** ISO date of the last meaningful content update; used by JSON-LD and the sitemap. */
+export const lastUpdated = '2026-11-10';
+
+export const siteDescription =
+  'Uneeb Bhatti is a full-stack developer in Lahore, Pakistan, building web products and AI agents with Next.js, TypeScript, Node.js and PostgreSQL.';
+
 export const navLinks: NavLink[] = [
   { label: 'Work', href: '#work' },
+  { label: 'Talks', href: '#talks' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
@@ -90,6 +116,18 @@ export const projects: Project[] = [
     cutout: true,
     desc: 'Worked on the backend of a mobile-first HR platform during my internship, building REST APIs and JWT authentication around attendance and leave workflows.',
     tags: ['Node.js', 'Express', 'MongoDB', 'JWT'],
+  },
+];
+
+export const talks: Talk[] = [
+  {
+    title: 'Building AI Agents with Google ADK for TypeScript',
+    format: 'Live online workshop',
+    when: '24 Oct 2026',
+    duration: '1 hour',
+    audience: 'Open to everyone, technical and non-technical',
+    desc: 'A live, hands-on session on building AI agents, pitched at a mixed technical and non-technical audience. We live-coded a customer support agent in TypeScript with Google ADK on Node.js, backed by a PostgreSQL database through Prisma. It was a single agent with several tools, including a write tool, so it could take real actions instead of only answering questions. The repository was shared so attendees could code along.',
+    tags: ['Google ADK', 'TypeScript', 'Node.js', 'Prisma', 'PostgreSQL'],
   },
 ];
 

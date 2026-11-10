@@ -19,7 +19,9 @@ import {
   projects,
   skillGroups,
   socialLinks,
+  talks,
 } from '@/lib/data';
+import Assistant from '@/components/Assistant';
 
 // Motion.tsx depends on .hero, #h1, .w, .rv and .mag.
 export default function Home() {
@@ -29,6 +31,7 @@ export default function Home() {
     <div className="relative min-h-screen overflow-x-clip selection:bg-acc selection:text-bg">
       <Scene3D />
       <Motion />
+      <Assistant />
 
       <header className="fixed inset-x-0 top-[calc(env(safe-area-inset-top,0px)+12px)] z-50 flex justify-center px-4">
         <nav className="flex w-full max-w-2xl items-center justify-between gap-4 rounded-full border border-line bg-card py-2 pr-2 pl-5 shadow-[0_8px_30px_rgba(0,0,0,.08)] backdrop-blur-xl">
@@ -151,10 +154,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="work" className="scroll-mt-24 py-24 sm:py-32">
+        <section
+          id="work"
+          className="scroll-mt-24 py-24 sm:py-32"
+          aria-labelledby="work-title"
+        >
           <Container>
             <SectionHeading
               eyebrow="Selected work"
+              id="work-title"
               aside="A mix of independent products, client work and engineering contributions. Every project came with a different problem to solve."
             >
               Not just
@@ -182,7 +190,7 @@ export default function Home() {
                           'transition-transform duration-300 ease-emil group-hover:scale-[1.03]',
                           project.cutout
                             ? 'object-contain p-6'
-                            : 'object-cover object-left-top',
+                            : 'object-cover object-top-left',
                         )}
                       />
                     </div>
@@ -381,6 +389,78 @@ export default function Home() {
             </div>
           </Container>
         </section>
+
+        {talks.length > 0 && (
+          <section
+            id="talks"
+            className="scroll-mt-24 py-24 sm:py-32"
+            aria-labelledby="talks-title"
+          >
+            <Container>
+              <SectionHeading eyebrow="Talks & workshops" id="talks-title">
+                Sharing what
+                <br />
+                <span className="text-mut">I build.</span>
+              </SectionHeading>
+
+              <div className="grid gap-4">
+                {talks.map((talk) => (
+                  <Card
+                    key={talk.title}
+                    className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-12"
+                  >
+                    <div className="flex flex-col gap-5">
+                      <h3 className="text-[clamp(1.6rem,3vw,2.25rem)] leading-[1.1] font-semibold tracking-[-.04em]">
+                        {talk.title}
+                      </h3>
+                      <p className="flex flex-wrap gap-x-2 gap-y-1 font-mono text-[11px] tracking-widest text-mut uppercase">
+                        <span className="text-acc">{talk.format}</span>
+                        <span aria-hidden="true">·</span>
+                        <span>{talk.when}</span>
+                        {talk.duration && (
+                          <>
+                            <span aria-hidden="true">·</span>
+                            <span>{talk.duration}</span>
+                          </>
+                        )}
+                      </p>
+                      {talk.href && (
+                        <Button
+                          href={talk.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-auto self-start"
+                        >
+                          View materials
+                          <ArrowUpRight aria-hidden="true" className="size-4" />
+                        </Button>
+                      )}
+                    </div>
+
+                    <div className="flex flex-col gap-6">
+                      <p className="text-[15px] leading-7 text-mut sm:text-base sm:leading-8">
+                        {talk.desc}
+                      </p>
+                      {talk.audience && (
+                        <div className="rounded-2xl border border-line bg-chip p-4">
+                          <p className="font-mono text-[11px] tracking-widest text-mut uppercase">
+                            Audience
+                          </p>
+                          <p className="mt-1 text-sm">{talk.audience}</p>
+                        </div>
+                      )}
+                      <div className="mt-auto flex flex-wrap gap-2">
+                        {talk.tags.map((tag) => (
+                          <Tag key={tag}>{tag}</Tag>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </Container>
+          </section>
+        )}
 
         <section
           id="skills"
